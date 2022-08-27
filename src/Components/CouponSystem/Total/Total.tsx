@@ -6,7 +6,7 @@ import "./Total.css";
 function Total(): JSX.Element {
 
     const [count, setCount] = useState<number>(0);
-    
+
     useEffect(() => {
         countCoupons()
             .then(res => setCount(res.data))
@@ -15,12 +15,11 @@ function Total(): JSX.Element {
 
     return (
         <div className="Total">
-            <p>Total tasks remaining : 
 
-            <span className={count>0 ? "full_count":"empty_count"}> {count} </span>
 
-            </p>
-            
+            <span className={count > 0 ? "full_count" : "empty_count"}> {count} </span>
+
+
         </div>
     );
 }

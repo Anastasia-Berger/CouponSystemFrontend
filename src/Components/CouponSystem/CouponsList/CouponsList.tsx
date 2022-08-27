@@ -4,6 +4,8 @@ import { getCoupons } from "../../../Web API/CouponsApi";
 import notify, { SccMsg } from "../../../Services/Notification";
 import CouponBox from "../CouponBox/CouponBox";
 import "./CouponsList.css";
+import CustomLink from "../../Shared/CustomLink/CustomLink";
+import { FiPlusCircle } from "react-icons/fi";
 
 function CouponsList(): JSX.Element {
     const [coupons, setCoupons] = useState<CouponModel[]>([]);
@@ -23,7 +25,7 @@ function CouponsList(): JSX.Element {
     return (
         <div className="CouponsList">
 			<h2>List Of Coupons</h2>
-
+            <CustomLink to="/coupons/add"> <FiPlusCircle size={30}/> </CustomLink>
             <div className="CouponsContainer">{coupons.map((coupon) => <CouponBox key={coupon.id} coupon={coupon} />)}</div>
 
         </div>

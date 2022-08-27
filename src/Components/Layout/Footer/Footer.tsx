@@ -6,6 +6,7 @@ function Footer(): JSX.Element {
         <div className="Footer">
             <div className="author-name"> &copy; BergerAnastasia</div>
             <SocialMedia />
+            
         </div>
     );
 }

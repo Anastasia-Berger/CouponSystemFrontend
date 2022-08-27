@@ -1,3 +1,7 @@
 .About {
 	
 }
+
+.About p::first-letter{
+    font-size: 2em;
+}
