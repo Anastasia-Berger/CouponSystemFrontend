@@ -1,0 +1,12 @@
+.Header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+    background-color: #ffffff;
+}
+
+.Header > .react-icons {
+    color: #000000;
+  }

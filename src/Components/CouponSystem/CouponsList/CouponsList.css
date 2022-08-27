@@ -1,0 +1,13 @@
+.CouponsList {
+    height: 100%;
+
+}
+
+.CouponsContainer{
+    /* display: grid;
+    grid-template-columns: 33% 33% 33%; */
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
