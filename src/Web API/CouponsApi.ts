@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CouponModel } from "../Models/CouponModel";
+import { CouponModel } from "../Models/BeansModel/CouponModel";
 import globals from "../Services/Globals";
 
 

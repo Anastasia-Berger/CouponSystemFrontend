@@ -1,14 +1,20 @@
 import { Notyf } from 'notyf'
 
 export enum SccMsg {
-    ADDED_TASK = 'Added coupon successfully',
-    UPDATED_TASK = 'Updated coupon successfully',
-    DELETED_TASK = 'Deleted coupon successfully',
-    GOT_TASK = 'Got coupon successfully'
+    ADDED_TASK = 'Added task successfully',
+    UPDATED_TASK = 'Updated task successfully',
+    DELETED_TASK = 'Deleted task successfully',
+    GOT_TASKS = 'got tasks successfully',
+    GOT_SINGLE_TASK = 'got task successfully',
+    LOGOUT_SUCCESS = 'logout successfully',
+    LOGIN_SUCCESS = 'login successfully',
+    REGISTER_SUCCESS = 'register successfully'
 }
-export enum ErrMsg {
 
+export enum ErrMsg {
+    PLS_LOGIN = 'please login'
 }
+
 class Notify {
 
     private notification = new Notyf({ duration: 4000, position: { x: "left", y: "top" } });

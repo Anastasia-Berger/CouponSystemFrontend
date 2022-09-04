@@ -1,7 +1,7 @@
 .About {
-	
+    width: 100%;
 }
 
-.About p::first-letter{
+.About p::first-letter {
     font-size: 2em;
 }

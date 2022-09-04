@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CompanyModel } from "../Models/CompanyModel";
+import { CompanyModel } from "../Models/BeansModel/CompanyModel";
 import globals from "../Services/Globals";
 
 export async function getCompanies() {
@@ -8,6 +8,10 @@ export async function getCompanies() {
 
 export async function getCoupon(id: number) {
     return await axios.get<CompanyModel>(globals.urls.companies + id);
+}
+
+export async function countCompanies() {
+    return await axios.get<number>(globals.urls.companies + 'count');
 }
 
 export async function addCoupon(company: CompanyModel) {

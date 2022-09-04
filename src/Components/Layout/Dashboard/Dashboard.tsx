@@ -1,7 +1,8 @@
 import "./Dashboard.css";
 import CustomLink from "../../Shared/CustomLink/CustomLink";
 import Logo from "../../Shared/Logo/Logo";
-import Total from "../../CouponSystem/Total/Total";
+import TotalCoupons from "../../CouponSystem/Totals/TotalCuopons/TotalCoupons";
+import TotalCompanies from "../../CouponSystem/Totals/TotalCompanies/TotalCompanies";
 
 function Dashboard(): JSX.Element {
     return (
@@ -24,8 +25,8 @@ function Dashboard(): JSX.Element {
             <nav className="Navbar">
                 <CustomLink to="home">Home</CustomLink>
                 <CustomLink to="about">About</CustomLink>
-                <CustomLink to="coupons">Coupons (<Total/>)</CustomLink>
-                <CustomLink to="companies">Companies</CustomLink>
+                <CustomLink to="coupons">Coupons (<TotalCoupons/>)</CustomLink>
+                <CustomLink to="companies">Companies (<TotalCompanies/>)</CustomLink>
                 <CustomLink to="credits">Credits</CustomLink>
             </nav>
 
