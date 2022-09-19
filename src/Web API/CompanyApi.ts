@@ -1,27 +1,53 @@
-import axios from "axios";
 import { CompanyModel } from "../Models/BeansModel/CompanyModel";
+import { CouponModel } from "../Models/BeansModel/CouponModel";
 import globals from "../Services/Globals";
+import tokenAxios from "../Services/InterceptorAxios";
 
-export async function getCompanies() {
-    return await axios.get<CompanyModel[]>(globals.urls.companies);
+export async function addCoupon(coupon: CouponModel) {
+  return await tokenAxios.post<CouponModel>(
+    globals.urls.companies + "/coupons", coupon
+  );
 }
 
-export async function getCoupon(id: number) {
-    return await axios.get<CompanyModel>(globals.urls.companies + id);
-}
-
-export async function countCompanies() {
-    return await axios.get<number>(globals.urls.companies + 'count');
-}
-
-export async function addCoupon(company: CompanyModel) {
-    return await axios.post<CompanyModel>(globals.urls.companies, company);
+export async function updateCoupon(id: number, coupon: CouponModel) {
+  return await tokenAxios.put<CouponModel>(
+    globals.urls.companies + "/coupons/" + id, coupon
+  );
 }
 
 export async function deleteCoupon(id: number) {
-    return await axios.delete<any>(globals.urls.companies + id);
+  return await tokenAxios.delete<any>(globals.urls.companies + "/coupons/" + id
+  );
 }
 
-export async function updateCoupon(id: number, company: CompanyModel) {
-    return await axios.put<any>(globals.urls.companies + id, company);
+export async function getAllCompanyCoupons() {
+  return await tokenAxios.get<CouponModel[]>(globals.urls.companies + "/coupons"
+  );
+}
+
+// export async function getCompanyAsList() {
+//   return await tokenAxios.get<CouponModel[]>(
+//     globals.urls.companies + "/currentAsList"
+//   );
+// }
+
+export async function getSingleCoupon(id: number) {
+  return await tokenAxios.get<CouponModel>(
+    globals.urls.companies + "/coupons/" + id);
+}
+
+export async function getAllCompanyCouponsByCategory(category: string) {
+  return await tokenAxios.get<CouponModel[]>(
+    globals.urls.companies + "/coupons/category?" + category
+  );
+}
+
+export async function getAllCompanyCouponsByMaxPrice(value: number) {
+  return await tokenAxios.get<CouponModel[]>(
+    globals.urls.companies + "/coupons/price/max?value=" + value
+  );
+}
+
+export async function getCompanyDetails() {
+  return await tokenAxios.get<CompanyModel>(globals.urls.companies + "/details");
 }

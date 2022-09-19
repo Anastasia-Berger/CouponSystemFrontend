@@ -1,23 +1,48 @@
 import { Notyf } from 'notyf'
 
+
+
+
 export enum SccMsg {
-    ADDED_TASK = 'Added task successfully',
-    UPDATED_TASK = 'Updated task successfully',
-    DELETED_TASK = 'Deleted task successfully',
-    GOT_TASKS = 'got tasks successfully',
-    GOT_SINGLE_TASK = 'got task successfully',
-    LOGOUT_SUCCESS = 'logout successfully',
-    LOGIN_SUCCESS = 'login successfully',
-    REGISTER_SUCCESS = 'register successfully'
+    ALL_COMPANIES = "got all companies successfully",
+    SINGLE_COMPANY = "got single company successfully",
+    DELETE_COMPANY = "deleted company successfully",
+    UPDATE_COMPANY = "updated company successfully",
+    ADD_COMPANY = "added company successfully",
+    ALL_CUSTOMERS = "got all customers successfully",
+    SINGLE_CUSTOMER = "got single customer successfully",
+    DELETE_CUSTOMER = "deleted customer successfully",
+    UPDATE_CUSTOMER = "updated customer successfully",
+    ADD_CUSTOMER = "added customer successfully",
+    ALL_COUPONS = "got all coupons successfully",
+    COUPONS_CATEGORY = "got all coupons by category successfully",
+    COUPONS_MAX_PRICE = "got all coupons by maximum price successfully",
+    SINGLE_COUPON = "got single coupon successfully",
+    DELETE_COUPON = "deleted coupon successfully",
+    UPDATE_COUPON = "updated coupon successfully",
+    ADD_COUPON = "added coupon successfully",
+    LOGIN = "login request sent successfully",
+    PURCHASED = "coupon purchased successfully",
+    GOT_NAME = "got company name successfully",
+    LOGOUT_SUCCESS = "LOGOUT_SUCCESS",
+    REGISTER_SUCCESS = "REGISTER_SUCCESS"
 }
 
+
 export enum ErrMsg {
-    PLS_LOGIN = 'please login'
+    PLS_LOGIN = 'please login',
+    FAIL_EDIT_COMPANIES = "failed to edit company",
+    WRONG_LOGIN_DETAILS = "Wrong login details. Please try again",
+    COUPON_NOT_FOUND = "COUPON_NOT_FOUND"
 }
 
 class Notify {
 
-    private notification = new Notyf({ duration: 4000, position: { x: "left", y: "top" } });
+    private notification = new Notyf({ 
+        duration: 4000, 
+        position: { x: "left", y: "top" } 
+    });
+
     public success(message: string) {
         this.notification.success(message);
     }
@@ -48,7 +73,7 @@ class Notify {
         }
 
 
-        return "Miaouuuu, an error occurred, please try again.";
+        return "An error occurred, please try again.";
 
 
     }

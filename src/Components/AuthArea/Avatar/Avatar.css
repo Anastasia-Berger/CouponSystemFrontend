@@ -1,0 +1,11 @@
+.Avatar {
+	
+}
+
+.Avatar > img{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border: 2px dotted pink;
+    margin: 5px;
+}

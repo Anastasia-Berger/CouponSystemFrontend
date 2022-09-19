@@ -10,6 +10,8 @@ function Credits(): JSX.Element {
             <h2>Icons</h2>
             <a href="https://icons8.com/">Icons8</a>
             <a href="https://react-icons.github.io/react-icons/">React Icons</a>
+            <h2>Images</h2>
+            <a href="https://www.freepik.com/free-vector/cute-astronaut-eating-doughnut-holding-coffee-cup-moon-cartoon_11919365.htm#query=Cute%20astronaut&position=38&from_view=author">Image by catalyststuff</a> on Freepik
         </div>
     );
 }

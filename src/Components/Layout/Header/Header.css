@@ -1,12 +1,17 @@
 .Header {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: start;
     align-items: center;
+    gap: 0.5em;
 
     padding: 1rem 2rem;
 
     background-color: #ffffff;
+}
+
+.Header>.welcome {
+    font-size: 22px;
 }
 
 .Header>.react-icons {

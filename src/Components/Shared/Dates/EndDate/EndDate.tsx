@@ -8,7 +8,7 @@ interface endDateProps {
 function EndDate(props: endDateProps): JSX.Element {
     return (
         <div className="EndDate">
-			<p>End Date : {moment(props.endDate).format('DD/MM/YYYY')}</p>
+			<p>To : {moment(props.endDate).format('DD/MM/YYYY')}</p>
         </div>
     );
 }

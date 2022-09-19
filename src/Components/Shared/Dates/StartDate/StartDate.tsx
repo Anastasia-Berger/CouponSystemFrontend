@@ -8,7 +8,7 @@ interface StartDateProps {
 function StartDate(props: StartDateProps): JSX.Element {
     return (
         <div className="StartDate">
-            <p>Date : {moment(props.startDate).format('DD/MM/YYYY')}</p>
+            <p>From : {moment(props.startDate).format('DD/MM/YYYY')}</p>
         </div>
     );
 }

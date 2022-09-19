@@ -1,0 +1,12 @@
+.AppName {
+    font-size: 22px;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.AppName > .first{
+    font-weight: 400;
+}
+
+.AppName > .second{
+    font-weight: 600;
+}

@@ -1,11 +1,13 @@
 
 // Step 1 - Create AppState and manage the collection once and in a centralize place
 
-import { LoginModel } from "../Models/Identification/LoginModel";
+import { UserModel } from "../Models/Identification/UserModel";
 import store from "./store";
 
 export class AuthAppState {
-    public user: LoginModel = new LoginModel();
+    
+    public user: UserModel = new UserModel();
+
     public constructor() {
         try {
             const storedUser = JSON.parse(localStorage.getItem('user') || '');
@@ -38,7 +40,7 @@ export function registerAction(): AuthAction {
     return { type: AuthActionType.Register, payload: {} };
 }
 
-export function loginAction(user: LoginModel): AuthAction {
+export function loginAction(user: UserModel): AuthAction {
     return { type: AuthActionType.Login, payload: user };
 }
 
@@ -61,7 +63,7 @@ export function authReducer(currentState: AuthAppState = new AuthAppState(),
             localStorage.setItem("user", JSON.stringify(newState.user)); // Saving in the session storage (won't be deleted)
             break;
         case AuthActionType.Logout: // No payload
-            newState.user = new LoginModel();
+            newState.user = new UserModel();
             localStorage.removeItem("user");
             break;
 

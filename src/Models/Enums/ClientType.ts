@@ -1,6 +1,6 @@
 export enum ClientType{
     ADMINISTRATOR = 'ADMINISTRATOR',
-    COMPANY = 'COMANY',
+    COMPANY = 'COMPANY',
     CUSTOMER = 'CUSTOMER',
     USER = 'USER'
 }

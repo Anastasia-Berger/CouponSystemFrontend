@@ -44,3 +44,47 @@
   -moz-box-shadow: 5px 2px 24px 0px rgba(66, 68, 90, 0.26);
   box-shadow: 5px 2px 24px 0px rgba(66, 68, 90, 0.26);
 }
+
+/* GLOBAL CSS */
+
+/* From uiverse.io by @ke1221 */
+button {
+  color: #090909;
+  /* padding: 0.8em 1em; */
+  /* font-size: 1rem; */
+  /* border-radius: 1.5em; */
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+  transition: all .3s;
+  box-shadow: 6px 6px 12px #c5c5c5,
+    -6px -6px 12px #ffffff;
+}
+
+button:active {
+  color: #666;
+  box-shadow: inset 4px 4px 12px #c5c5c5,
+    inset -4px -4px 12px #ffffff;
+}
+
+/* FORM CSS */
+
+.inputGroup {
+  margin: 1em 0;
+  max-width: 300px;
+}
+
+.inputGroup input {
+  font-size: 100%;
+  padding: 0.8em 1em;
+  border: 2px solid rgb(200, 200, 200);
+  background-color: transparent;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.inputGroup button {
+  padding: 0.8em 1em;
+  font-size: 1rem;
+  border-radius: 1.5em;
+  width: 100%;
+}

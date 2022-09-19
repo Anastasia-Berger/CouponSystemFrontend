@@ -1,0 +1,18 @@
+.CustomerItem {
+    max-height: fit-content;
+
+    display: flex;
+    flex-direction: column;
+    padding-right: 0;
+
+
+    border-radius: 20px;
+
+    min-width: 300px;
+    max-width: 5rem;
+    
+    margin: 13px;
+    padding: 10px;
+
+    box-shadow: 5px 2px 24px 0px rgba(66, 68, 90, 0.26);
+}

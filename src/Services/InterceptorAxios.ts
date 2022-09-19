@@ -7,7 +7,7 @@ const tokenAxios = axios.create();
 tokenAxios.interceptors.request.use(request => {
 
     request.headers = {
-        "authorization": store.getState().authState.user.token
+        "authorization": store.getState().authReducer?.user?.token
     };
 
     return request;

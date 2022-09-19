@@ -1,11 +1,11 @@
 export enum Category {
-    FOOD,
-    RESTAURANT,
-    VACATION,
-    CLOTHING,
-    TOYS,
-    PHARMA,
-    SPORTS,
-    ELECTRONICS,
-    GAMING
+    FOOD = 'FOOD',
+    RESTAURANT = 'RESTAURANT',
+    VACATION = 'VACATION',
+    CLOTHING = 'CLOTHING',
+    TOYS = 'TOYS',
+    PHARMA = 'PHARMA',
+    SPORTS = 'SPORTS',
+    ELECTRONICS = 'ELECTRONICS',
+    GAMING= 'GAMING'
 }

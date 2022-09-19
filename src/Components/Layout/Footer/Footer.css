@@ -5,4 +5,11 @@
     align-items: center;
 
     background-color: #fbfaff60;
+    text-decoration: none;
+
+}
+
+.Footer a {
+    text-decoration: none;
+
 }
