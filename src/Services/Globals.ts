@@ -24,8 +24,8 @@ class ProductionGlobals extends Globals {
         login:      '/login',
         register:   '/register',
         users:      '/Assets/Users/',
-        astronaut:  './Assets/Astronaut/jpg/',
-        categories: './Assets/Categories/jpg/'
+        astronaut:  '/Assets/Astronaut/jpg/',
+        categories: '/Assets/Categories/jpg/'
     }
 }
 

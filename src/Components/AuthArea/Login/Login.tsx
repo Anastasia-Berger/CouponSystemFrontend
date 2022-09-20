@@ -65,9 +65,12 @@ function Login(): JSX.Element {
     return (
         <div className="Login">
             <h2>Login</h2>
-            <p>Don’t have an account?  <Link to="/register">Sign up</Link></p>
-            <form onSubmit={handleSubmit(onSubmit)}>
 
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <hr />
+                <p>Don’t have an account?  <Link to="/register">Sign up</Link></p>
+
+                <hr />
                 <label htmlFor="clientType" className="icon"><FiUser /></label>
                 <select {...register("clientType")} id="clientType">
                     <option value="" disabled={true} selected style={{ color: "black" }}>Client Role</option>

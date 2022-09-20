@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FiPlusCircle, FiUserPlus } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import { CustomerModel } from "../../../../../Models/BeansModel/CustomerModel";
+import { ClientType } from "../../../../../Models/Enums/ClientType";
 import { customersDownloadedAction } from "../../../../../Redux/CustomersAppState";
 import store from "../../../../../Redux/store";
 import notify, { ErrMsg } from "../../../../../Services/Notification";
@@ -41,12 +42,15 @@ function CustomersList(): JSX.Element {
         }
     }, []);
 
-    
+
     return (
         <div className="CustomersList">
-			
+
             <h2>Our Customers</h2>
-            <Link to="/customers/add"><button><FiUserPlus size={30} /> </button></Link>
+
+            {(store.getState().authReducer.user.clientType == ClientType.ADMINISTRATOR) ?
+                <><Link to="/customers/add"><button><FiUserPlus size={30} /></button></Link></>
+                : <></>}
 
             {(customers?.length > 0)
                 ?

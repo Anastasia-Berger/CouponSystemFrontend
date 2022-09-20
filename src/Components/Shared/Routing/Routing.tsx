@@ -57,16 +57,22 @@ function Routing(): JSX.Element {
                 <Route path='/admin/customers' element={<CustomersList />} />
                 <Route path='/admin/coupons' element={<CouponsList />} />
 
+                <Route path='/companies/add' element={<AddCompany />} />
+                <Route path='/customers/add' element={<AddCustomer />} />
+                <Route path='/coupons/add' element={<AddCoupon />} />
 
                 <Route path='/companies/:id' element={<CompanyDetails />} />
-                <Route path='/companies/add' element={<AddCompany />} />
+                <Route path='/customers/:id' element={<CustomerDetails />} />
+
+
+                
                 <Route path='/companies/edit/:id' element={<UpdateCompany />} />
                 <Route path='/companies/delete/:id' element={<DeleteCompany />} />
 
 
                 
-                <Route path='/customers/:id' element={<CustomerDetails />} />
-                <Route path='/customers/add' element={<AddCustomer />} />
+                
+                
                 <Route path='/customers/:id/update' element={<UpdateCustomer />} />
                 <Route path='/customers/:id/delete' element={<DeleteCustomer />} />
 
@@ -74,11 +80,9 @@ function Routing(): JSX.Element {
 
                 <Route path='/companies/:id/coupons' element={<CompanyCoupons />} />
 
-                <Route path='/companies/:id/addCoupon' element={<AddCoupon />} />
+                {/* <Route path='/companies/:id/coupons/add' element={<AddCoupon />} /> */}
                 <Route path='/companies/:id/coupons/edit/:id' element={<UpdateCoupon />} />
                 <Route path='/companies/:id/coupons/delete/:id' element={<DeleteCoupon />} />
-
-                <Route path='/companies/:id/details' element={<CompanyDetails />} />
 
                 {/* CUSTOMER FUNCTIONAL PATH */}
                 <Route path='/customers/home' element={<Home />} />

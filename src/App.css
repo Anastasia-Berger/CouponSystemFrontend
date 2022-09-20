@@ -47,44 +47,85 @@
 
 /* GLOBAL CSS */
 
-/* From uiverse.io by @ke1221 */
-button {
-  color: #090909;
-  /* padding: 0.8em 1em; */
-  /* font-size: 1rem; */
-  /* border-radius: 1.5em; */
-  background: #e8e8e8;
-  border: 1px solid #e8e8e8;
-  transition: all .3s;
-  box-shadow: 6px 6px 12px #c5c5c5,
-    -6px -6px 12px #ffffff;
+a{
+  text-decoration: none;
 }
 
-button:active {
+/* FORMS GLOBAL CSS */
+
+form, input, select, p {
+  padding: 0;
+  margin: 0;
+  outline: none;
+  font-size: 16px;
   color: #666;
-  box-shadow: inset 4px 4px 12px #c5c5c5,
-    inset -4px -4px 12px #ffffff;
 }
 
-/* FORM CSS */
-
-.inputGroup {
-  margin: 1em 0;
-  max-width: 300px;
+h2 {
+  font-size: 32px;
+  font-weight: 300;
+  text-align: center;
+  margin: 1em auto 0 auto;
 }
 
-.inputGroup input {
-  font-size: 100%;
-  padding: 0.8em 1em;
-  border: 2px solid rgb(200, 200, 200);
-  background-color: transparent;
-  border-radius: 20px;
+form {
+  margin: 0 30px;
+  text-align: center;
+}
+
+label.icon {
+  margin: 0;
+  border-radius: 15px 0 0 15px;
+}
+
+form>span {
   width: 100%;
+  color: red;
 }
 
-.inputGroup button {
-  padding: 0.8em 1em;
-  font-size: 1rem;
-  border-radius: 1.5em;
+input, select {
+  /* width: 80%; */
+  width: calc(100% - 58px);
+  height: 40px;
+  margin: 13px 0 0 0px;
+  padding-left: 10px;
+  border-radius: 0 15px 15px 0;
+  border: solid 1px #cbc9c9;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, .09);
+  background: #fff;
+}
+
+select {
+  min-width: 83%;
+  /* padding-right: 10px; */
+}
+
+.icon {
+  display: inline-block;
+  padding: 10px 15px;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, .09);
+  background: #1c87c9;
+  color: #fff;
+  text-align: center;
+}
+
+form > button {
   width: 100%;
+  padding: 10px 0;
+  margin: 10px auto;
+  border-radius: 5px;
+  border: none;
+  background: royalblue;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+
+form > button:hover {
+  background: #26a9e0;
+}
+
+hr {
+  color: #a9a9a9;
+  opacity: 0.3;
 }

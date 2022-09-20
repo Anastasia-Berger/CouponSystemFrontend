@@ -14,8 +14,9 @@ function CustomLink(props: CustomLinkProps): JSX.Element {
     return (
         <div className="CustomLink">
             <Link
-                className={match ? "CustomLink active" : "CustomLink"}
-                to={props.to}>
+                className={match ? "active" : "non-active"}
+                to={props.to}
+            >
                 {props.children}
             </Link>
         </div>

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FiPlusCircle, FiUserPlus } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import { CompanyModel } from "../../../../../Models/BeansModel/CompanyModel";
+import { ClientType } from "../../../../../Models/Enums/ClientType";
 import { companiesDownloadedAction } from "../../../../../Redux/CompaniesAppState";
 import store from "../../../../../Redux/store";
 import notify, { ErrMsg, SccMsg } from "../../../../../Services/Notification";
@@ -42,8 +43,12 @@ function CompaniesList(): JSX.Element {
 
     return (
         <div className="CompaniesList">
-            <h2>Our Companies</h2>
-            <Link to="/companies/add"><button><FiUserPlus size={30} /> </button></Link>
+            <h2>Companies</h2>
+
+
+            {(store.getState().authReducer.user.clientType == ClientType.ADMINISTRATOR) ?
+                <><Link to="/companies/add"><button><FiUserPlus size={30} /></button></Link></>
+                : <></>}
 
             {(companies?.length > 0)
                 ?
@@ -51,7 +56,6 @@ function CompaniesList(): JSX.Element {
                     <div className="CompaniesContainer">
                         {companies.map((company) => <CompanyBox key={company.id} company={company} />)}
                     </div>
-
                 </>
                 :
                 <>

@@ -1,12 +1,17 @@
 .CustomLink {
-	color: #000000;
-    margin-bottom: 10px;
-    text-decoration: none;
+    /* border: 1px solid rgb(255, 85, 85); */
+    border-radius: 20px;
+    color: #000000;
+    display: grid;
 }
 
 .CustomLink .active {
-    color: #ff0000;
-    border-bottom: 2px solid #000000;
+    border-radius: 20px;
+    /* background-color: yellow; */
     font-weight: bold;
-    text-decoration: dashed;
+}
+
+.CustomLink .non-active {
+    border-radius: 20px;
+    /* background-color: rgb(0, 255, 255); */
 }

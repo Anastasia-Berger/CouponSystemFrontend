@@ -23,7 +23,7 @@ function DashboardHeader(): JSX.Element {
     return (
         <div className="DashboardHeader">
             {/* User */}
-            <Avatar uuid={1} />
+            <Avatar uuid={store.getState().authReducer.user?.token} />
 
             {/* Custom Menu */}
             <AuthMenu />

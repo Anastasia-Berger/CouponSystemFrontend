@@ -1,3 +1,8 @@
 .Clock {
-	
+    border: solid 1px gray;
+    border-radius: 20px;
+    padding: 0.8em 1em;
+    letter-spacing: 0.1em;
+    text-align: center;
+    width: 120px;
 }

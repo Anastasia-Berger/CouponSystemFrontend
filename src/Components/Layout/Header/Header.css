@@ -1,7 +1,7 @@
 .Header {
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: space-between;
     align-items: center;
     gap: 0.5em;
 
@@ -10,7 +10,9 @@
     background-color: #ffffff;
 }
 
-.Header>.welcome {
+.welcome {
+    display: flex;
+    gap: 5px;
     font-size: 22px;
 }
 

@@ -1,6 +1,28 @@
 .CouponsList {
     height: 100%;
+}
 
+.CouponsList h2{
+    margin: 0;
+}
+
+.CouponsList .page-title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: nowrap;
+
+    gap: 10px;
+}
+
+.CouponsList button.add-button{
+    width: 50px;
+    border-radius: 20px;
+    background-color: transparent;
+    border: 1px solid  royalblue;
+    color: royalblue;
 }
 
 .CouponsContainer{
@@ -11,3 +33,4 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+

@@ -1,39 +1,66 @@
 .Dashboard {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    align-content: center;
-
+    justify-content: flex-start;
+    /* align-items: center; */
     padding: 1rem;
-
     background-color: #fbfaff;
 }
 
-.App-logo {
-    height: 10vmin;
-    pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
-}
-
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-nav{
+.Navbar {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    gap: 1rem;
     margin: 25% 0;
+}
+
+.Navbar .CustomLink {
+    /* border: 1px solid rgb(0, 255, 21); */
+    border-radius: 20px;
+}
+
+.CustomLink .nav-item {
+    /* border: 2px solid rgb(110, 0, 0); */
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+}
+
+.CustomLink .active .nav-item {
+    border-radius: 20px;
+    background-color: #F87193;
+    color: #fff;
+    font-weight: bold;
+}
+
+.CustomLink .non-active .nav-item {
+    border-radius: 20px;
+    /* background-color: rgb(0, 255, 64); */
+    color: #8C8EA0;
+}
+
+.CustomLink .nav-item:hover {
+    border-radius: 20px;
+    background-color: #F87193;
+    color: #fff;
+}
+
+.nav-item .react-icons {
+    padding: 15px;
+    margin-right: 30px;
+
+    border: solid 1px #ccc;
+    border-radius: 20px;
+
+    background-color: #FFF;
+    color: #8C8EA0;
+}
+
+.CustomLink .active .nav-item .react-icons,
+.nav-item:hover .react-icons {
+    background-color: #EC6083;
+    border-color: #EC6083;
+    color: #fff;
 }

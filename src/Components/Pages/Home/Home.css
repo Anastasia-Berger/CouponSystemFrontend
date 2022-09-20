@@ -1,3 +1,54 @@
 .Home {
-	
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+/* From uiverse.io by @joe-watson-sbf */
+.home-card {
+    width: 600px;
+    height: 600px;
+    border-radius: 30px;
+    /* background: #212121; */
+    display: flex;
+    gap: 15px;
+    padding: .4em;
+}
+
+.home-card p {
+    height: 100%;
+    flex: 1;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all .5s;
+    background: #efefef;
+
+    border-radius: 30px;
+    border: solid 1px #ccc;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, .31);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-card p:hover {
+    flex: 4;
+    /* background-color: red; */
+    background-image: linear-gradient(to right top, #ffffff, #f6f5ff, #ebecff, #dee3ff, #d0dbff, #c5dcff, #b9dcff, #acddff, #a8e5ff, #a7ecfd, #abf2f8, #b3f8f3);
+}
+
+.home-card p span {
+    min-width: 15em;
+    padding: .5em;
+    text-align: center;
+    transform: rotate(-90deg);
+    transition: all .5s;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+
+.home-card p:hover span {
+    transform: rotate(0);
 }
