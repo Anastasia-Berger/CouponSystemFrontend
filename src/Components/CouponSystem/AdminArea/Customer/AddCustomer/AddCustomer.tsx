@@ -9,11 +9,12 @@ import "./AddCustomer.css";
 import { CustomerModel } from "../../../../../Models/BeansModel/CustomerModel";
 import { addCustomer } from "../../../../../Web API/AdminApi";
 import { customerAddedAction } from "../../../../../Redux/CustomersAppState";
+import { FiKey, FiUser } from "react-icons/fi";
+import { BsEnvelope } from "react-icons/bs";
 
 function AddCustomer(): JSX.Element {
 
     const navigate = useNavigate();
-
     useEffect(() => {
         // If we don't have a user object - we are not logged in
         if (!store.getState().authReducer.user?.token) {
@@ -44,7 +45,6 @@ function AddCustomer(): JSX.Element {
         = useForm<CustomerModel>({ mode: "all", resolver: yupResolver(schema) });
 
     const sendToRemote = async (customer: CustomerModel) => {
-
         await addCustomer(customer)
             .then(res => {
                 notify.success(SccMsg.ADD_CUSTOMER);
@@ -66,31 +66,24 @@ function AddCustomer(): JSX.Element {
             <h2>Add new Customer</h2>
             <form onSubmit={handleSubmit(sendToRemote)}>
 
-                <label htmlFor="firstName">first name</label>
-                <br />
+            <hr />
+                <label htmlFor="clientType" className="icon"><FiUser /></label>
                 <input type="text" {...register("firstName")} name="firstName" placeholder="First Name" />
-                <br />
                 <span>{errors.firstName?.message}</span>
                 <br />
 
-                <label htmlFor="lastName">lastName</label>
-                <br />
+                <label htmlFor="clientType" className="icon"><FiUser /></label>
                 <input type="text" {...register("lastName")} name="lastName" placeholder="Last Name" />
-                <br />
                 <span>{errors.lastName?.message}</span>
                 <br />
 
-                <label htmlFor="email">email</label>
-                <br />
+                <label htmlFor="email" className="icon"><BsEnvelope /></label>
                 <input type="email" {...register("email")} name="email" placeholder="Email" />
-                <br />
                 <span>{errors.email?.message}</span>
                 <br />
 
-                <label htmlFor="password">password</label>
-                <br />
-                <input type="password" {...register("password")} name="password" placeholder="Password" />
-                <br />
+                <label htmlFor="password" className="icon"><FiKey /></label>
+                <input type="password" {...register("password")} placeholder="Password" />
                 <span>{errors.password?.message}</span>
                 <br />
 

@@ -15,7 +15,7 @@ function Avatar(props: AvatarProps): JSX.Element {
 
     return (
         <div className="Avatar">
-            <img src={url} className="cool-border"></img>
+           <img src={url} className="cool-border"></img>
         </div>
     );
 }

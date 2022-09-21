@@ -9,10 +9,12 @@ import notify, { ErrMsg, SccMsg } from "../../../../../Services/Notification";
 import "./UpdateCustomer.css";
 import { updateCustomer } from "../../../../../Web API/AdminApi";
 import { customerUpdatedAction } from "../../../../../Redux/CustomersAppState";
+import { FiKey, FiUser } from "react-icons/fi";
+import { BsEnvelope } from "react-icons/bs";
 
 function UpdateCustomer(): JSX.Element {
-    const navigate = useNavigate();
 
+    const navigate = useNavigate();
     useEffect(() => {
         // If we don't have a user object - we are not logged in
         if (!store.getState().authReducer.user.token) {
@@ -47,21 +49,20 @@ function UpdateCustomer(): JSX.Element {
     let defaultValuesObj = { ...customer };
 
     const { register, handleSubmit, control, formState: { errors, isDirty, isValid } }
-        = useForm<CustomerModel>({ defaultValues: defaultValuesObj, mode: "all", resolver: yupResolver(schema) });
+        = useForm<CustomerModel>(
+            { defaultValues: defaultValuesObj, mode: "all", resolver: yupResolver(schema) });
 
     const { dirtyFields } = useFormState({
         control
     });
 
     const sendToRemote = async (customer: CustomerModel) => {
-
         await updateCustomer(id, customer)
             .then(res => {
                 notify.success(SccMsg.UPDATE_CUSTOMER);
                 // Updating global state
                 store.dispatch(customerUpdatedAction(res.data));
-                navigate('/customers');
-
+                navigate('/admin/customers');
             })
             .catch(err => {
                 notify.error(err);
@@ -75,35 +76,28 @@ function UpdateCustomer(): JSX.Element {
 			<h2>Update Customer</h2>
             <form onSubmit={handleSubmit(sendToRemote)}>
 
-                <label htmlFor="firstName">first name</label>
-                <br />
-                <input type="text" {...register("firstName")} name="firstName" placeholder="firstName" />
-                <br />
+            <hr />
+                <label htmlFor="clientType" className="icon"><FiUser /></label>
+                <input type="text" {...register("firstName")} name="firstName" placeholder="First Name" />
                 <span>{errors.firstName?.message}</span>
                 <br />
 
-                <label htmlFor="lastName">lastName</label>
-                <br />
-                <input type="text" {...register("lastName")} name="lastName" placeholder="lastName" />
-                <br />
+                <label htmlFor="clientType" className="icon"><FiUser /></label>
+                <input type="text" {...register("lastName")} name="lastName" placeholder="Last Name" />
                 <span>{errors.lastName?.message}</span>
                 <br />
 
-                <label htmlFor="email">email</label>
-                <br />
-                <input type="email" {...register("email")} name="email" placeholder="email" />
-                <br />
+                <label htmlFor="email" className="icon"><BsEnvelope /></label>
+                <input type="email" {...register("email")} name="email" placeholder="Email" />
                 <span>{errors.email?.message}</span>
                 <br />
 
-                <label htmlFor="password">password</label>
-                <br />
-                <input type="password" {...register("password")} name="password" placeholder="password" />
-                <br />
+                <label htmlFor="password" className="icon"><FiKey /></label>
+                <input type="password" {...register("password")} name="password" placeholder="Password" />
                 <span>{errors.password?.message}</span>
                 <br />
 
-                <button className="button-app" disabled={!isValid}>UPDATE</button>
+                <button disabled={!isDirty} className="button-app" >UPDATE</button>
             </form>
         </div>
     );

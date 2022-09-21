@@ -7,7 +7,7 @@ import notify, { ErrMsg } from "../../../../Services/Notification";
 import { getCustomerDetails } from "../../../../Web API/CustomerApi";
 import EmptyView from "../../../Shared/EmptyView/EmptyView";
 import CustomerCoupons from "../CustomerCoupons/CustomerCoupons";
-import CustomerItem from "../CustomerItem/CustomerItem";
+import CustomerItem from "../../AdminArea/Customer/CustomerItem/CustomerItem";
 import "./CustomerDetails.css";
 
 function CustomerDetails(): JSX.Element {

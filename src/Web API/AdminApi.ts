@@ -1,5 +1,4 @@
 import { CompanyModel } from "../Models/BeansModel/CompanyModel"
-import { CouponModel } from "../Models/BeansModel/CouponModel";
 import { CustomerModel } from "../Models/BeansModel/CustomerModel";
 import globals from "../Services/Globals";
 import tokenAxios from "../Services/InterceptorAxios";
@@ -41,7 +40,7 @@ export async function addCustomer(customer: CustomerModel) {
 
 export async function updateCustomer(id: number, customer: CustomerModel){
     return await tokenAxios.put<CustomerModel>(
-        globals.urls.admin + "/customers" + id,
+        globals.urls.admin + "/customers/" + id,
         customer
     );
 }

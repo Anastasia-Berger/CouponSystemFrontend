@@ -42,8 +42,6 @@ function TotalCoupons(): JSX.Element {
         
     }, []);
 
-
-
     useEffect(() => {
         return store.subscribe(() => {
             setCount(store.getState().couponsAppState.coupons.length); // Will let us notify

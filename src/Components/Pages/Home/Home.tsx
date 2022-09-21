@@ -27,13 +27,13 @@ function Home(): JSX.Element {
                     <div className="Container">
                         <div className="home-card">
                             <p><span>
-                                <CustomLink to="/admin/companies">Companies</CustomLink>
+                                <Link to="/admin/companies">Companies</Link>
                             </span></p>
                             <p><span>
-                                <CustomLink to="/admin/coupons">Coupons</CustomLink>
+                                <Link to="/admin/coupons">Coupons</Link>
                             </span></p>
                             <p><span>
-                                <CustomLink to="admin/customers">Customers</CustomLink>
+                                <Link to="/admin/customers">Customers</Link>
                             </span></p>
                         </div>
                     </div>

@@ -97,7 +97,6 @@ function Register(): JSX.Element {
                 <input type="password" {...register("confirm")} name="confirm" placeholder="Confirm" />
                 <span>{errors.confirm?.message}</span>
 
-
                 <button className="button-app" disabled={!isValid}>Register</button>
             </form>
         </div>

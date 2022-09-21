@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BsPersonPlus } from "react-icons/bs";
 import { FiPlusCircle, FiUserPlus } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import { CustomerModel } from "../../../../../Models/BeansModel/CustomerModel";
@@ -7,9 +8,10 @@ import { customersDownloadedAction } from "../../../../../Redux/CustomersAppStat
 import store from "../../../../../Redux/store";
 import notify, { ErrMsg } from "../../../../../Services/Notification";
 import { getAllCustomers } from "../../../../../Web API/AdminApi";
+import AddButton from "../../../../Shared/AddButton/AddButton";
 import CustomLink from "../../../../Shared/CustomLink/CustomLink";
 import EmptyView from "../../../../Shared/EmptyView/EmptyView";
-import CustomerItem from "../../../CustomerArea/CustomerItem/CustomerItem";
+import CustomerItem from "../CustomerItem/CustomerItem";
 import "./CustomersList.css";
 
 function CustomersList(): JSX.Element {
@@ -45,20 +47,24 @@ function CustomersList(): JSX.Element {
 
     return (
         <div className="CustomersList">
+            <div className="page-title">
+                <h2>Our Customers</h2>
+                {(store.getState().authReducer.user.clientType == ClientType.ADMINISTRATOR) ?
+                    <>
+                        <Link to="/admin/customers/add">
+                            {/* <FiUserPlus size={28} /> */}
+                            <AddButton value={"Customer"} />
+                        </Link>
+                    </> : <></>}
 
-            <h2>Our Customers</h2>
-
-            {(store.getState().authReducer.user.clientType == ClientType.ADMINISTRATOR) ?
-                <><Link to="/customers/add"><button><FiUserPlus size={30} /></button></Link></>
-                : <></>}
+            </div>
 
             {(customers?.length > 0)
                 ?
                 <>
-                    <div className="CompaniesContainer">
+                    <div className="Container">
                         {customers.map((customer) => <CustomerItem key={customer.id} customer={customer} />)}
                     </div>
-
                 </>
                 :
                 <>

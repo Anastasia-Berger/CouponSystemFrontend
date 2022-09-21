@@ -7,11 +7,8 @@ import { deleteCustomer } from "../../../../../Web API/AdminApi";
 import "./DeleteCustomer.css";
 
 function DeleteCustomer(): JSX.Element {
-        
-    const navigate = useNavigate();
-    const params = useParams();
-    const id = +(params.id || '');
 
+    const navigate = useNavigate();
     useEffect(() => {
         // If we don't have a user object - we are not logged in
         if (!store.getState().authReducer.user.token) {
@@ -19,8 +16,10 @@ function DeleteCustomer(): JSX.Element {
             notify.error(ErrMsg.PLS_LOGIN);
             navigate('/login');
         }
-    },[])
+    }, [])
 
+    const params = useParams();
+    const id = +(params.id || '');
 
     const yes = () => {
         deleteCustomer(id)
@@ -28,21 +27,21 @@ function DeleteCustomer(): JSX.Element {
                 notify.success(SccMsg.DELETE_CUSTOMER);
                 // Updating global state
                 store.dispatch(customerDeletedAction(id));
-                navigate('/customers');
+                navigate('/admin/customers');
             })
             .catch(err => notify.error(err));
     }
 
     const no = () => {
-        navigate('/customers');
+        navigate('/admin/customers');
     }
 
     return (
         <div className="DeleteCustomer">
             <p>Are you sure you want to delete customer? id={id}?</p>
-            <div>
-                <button onClick={yes}>Yes</button>
-                <button onClick={no}>No</button>
+            <div className="buttons">
+                <button onClick={yes} className='yes'>Yes</button>
+                <button onClick={no} className='no'>No</button>
             </div>
         </div>
     );

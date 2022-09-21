@@ -65,7 +65,7 @@ h2 {
   font-size: 32px;
   font-weight: 300;
   text-align: center;
-  margin: 1em auto 0 auto;
+  /* margin: 1em auto 0 auto; */
 }
 
 form {
@@ -128,4 +128,42 @@ form > button:hover {
 hr {
   color: #a9a9a9;
   opacity: 0.3;
+}
+
+/* ITEM BOXES CSS */
+
+.buttons{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+
+  width: 100%;
+}
+
+.buttons .nav-item .react-icons {
+  margin-right: 0px;
+}
+
+
+.BoxImage {
+  display: flex;
+  justify-content: center;
+  margin-top: -1.5em;
+}
+
+.BoxImage>img {
+  width: auto;
+  height: 60px;
+  border: 1px solid #eee;
+  border-radius: 50%;
+  vertical-align: middle;
+  align-items: center;
+  background-color: #eee;
+
+  padding: 10px 0px;
+}
+
+.Details p {
+  font-size: 15px;
+  margin: 0;
 }

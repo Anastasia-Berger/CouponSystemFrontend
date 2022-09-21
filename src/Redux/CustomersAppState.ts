@@ -7,7 +7,6 @@ export class CustomersAppState {
     public coupons: CouponModel[] = [];
 }
 
-
 // Step 2 - Define all possible action for your application state
 export enum CustomersActionType {
     CustomersDownloaded = "CustomersDownloaded",
@@ -17,7 +16,6 @@ export enum CustomersActionType {
     CustomersClear = "CustomersClear",
     PurchaseCouponAction = "PurchaseCouponAction"
 }
-
 
 // Step 3 - Define Action Interface to describe actionAction & payload if needed
 export interface CustomerAction {
@@ -51,7 +49,8 @@ export function PurchaseCouponAction(coupon: CouponModel): CustomerAction {
 }
 
 // Step 5 - Reducer function perform the required action
-export function customersReducer(currentState: CustomersAppState = new CustomersAppState(), action: CustomerAction): CustomersAppState {
+export function customersReducer(currentState: CustomersAppState = new CustomersAppState(), action: CustomerAction)
+: CustomersAppState {
     const newState = { ...currentState } //Spread Operator
     switch (action.type) {
         case CustomersActionType.CustomersDownloaded:

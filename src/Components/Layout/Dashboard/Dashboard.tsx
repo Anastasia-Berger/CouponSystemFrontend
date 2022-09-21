@@ -16,8 +16,8 @@ import { BsHouse, BsShop } from "react-icons/bs";
 import { FiGift, FiTag, FiUsers } from "react-icons/fi";
 
 function Dashboard(): JSX.Element {
+    
     const navigate = useNavigate();
-
     useEffect(() => {
         // If we don't have a user object - we are not logged in
         if (!store.getState().authReducer.user?.token) {
@@ -36,7 +36,6 @@ function Dashboard(): JSX.Element {
         store.getState().authReducer.user?.clientType === "ADMINISTRATOR"
     );
 
-
     useEffect(() => {
         return store.subscribe(() => {
             setCustomer(store.getState().authReducer.user?.clientType === "CUSTOMER");
@@ -51,30 +50,55 @@ function Dashboard(): JSX.Element {
             <DashboardHeader />
 
             {customer ? (
-                <>
-                    <nav className="Navbar">
-                        <span>
-                            <BsHouse />
-                            <CustomLink to="customer/home">Home</CustomLink>
-                        </span>
-                        <CustomLink to="coupons">Coupons(<TotalCoupons />)</CustomLink>
-                        <CustomLink to="details">Profile</CustomLink>
-                    </nav>
-                </>
-            ) : (<></>)}
+                <><nav className="Navbar">
+
+                    <CustomLink to="admin/home">
+                        <div className="nav-item">
+                            <BsHouse size={20} className='react-icons' />
+                            <span>Home</span>
+                        </div>
+                    </CustomLink>
+
+                    <CustomLink to="details">
+                        <FiGift size={20} className='react-icons' />
+                        <span>Profile</span>
+                    </CustomLink>
+
+                    <CustomLink to="coupons">
+                        <div className="nav-item">
+                            <FiGift size={20} className='react-icons' />
+                            <span>Coupons / <TotalCoupons /></span>
+                        </div>
+                    </CustomLink>
+
+                </nav>
+                </>) : (<></>)}
 
             {company ? (
                 <>
                     <nav className="Navbar">
-                        <span>
-                            <BsHouse />
-                            <CustomLink to="companies/home">Home</CustomLink>
-                        </span>
-                        <CustomLink to="companies/details">Profile</CustomLink>
-                        <CustomLink to="companies/:id/coupons">Coupons (<TotalCoupons />)</CustomLink>
+
+                        <CustomLink to="admin/home">
+                            <div className="nav-item">
+                                <BsHouse size={20} className='react-icons' />
+                                <span>Home</span>
+                            </div>
+                        </CustomLink>
+
+                        <CustomLink to="companies/details">
+                            <FiGift size={20} className='react-icons' />
+                            <span>Profile</span>
+                        </CustomLink>
+
+                        <CustomLink to="companies/coupons">
+                            <div className="nav-item">
+                                <FiGift size={20} className='react-icons' />
+                                <span>Coupons / <TotalCoupons /></span>
+                            </div>
+                        </CustomLink>
+
                     </nav>
-                </>
-            ) : (<></>)}
+                </>) : (<></>)}
 
             {admin ? (
                 <>
@@ -87,7 +111,6 @@ function Dashboard(): JSX.Element {
                             </div>
                         </CustomLink>
 
-
                         <CustomLink to="admin/companies">
                             <div className="nav-item">
                                 <BsShop size={20} className='react-icons' />
@@ -95,29 +118,22 @@ function Dashboard(): JSX.Element {
                             </div>
                         </CustomLink>
 
-
-
                         <CustomLink to="admin/coupons">
                             <div className="nav-item">
                                 <FiGift size={20} className='react-icons' />
                                 <span>Coupons / <TotalCoupons /></span>
                             </div>
-
                         </CustomLink>
-
 
                         <CustomLink to="admin/customers">
                             <div className="nav-item">
                                 <FiUsers size={20} className='react-icons' />
                                 <span>Customers / <TotalCustomers /></span>
                             </div>
-
                         </CustomLink>
 
-
                     </nav>
-                </>
-            ) : (<></>)
+                </>) : (<></>)
             }
 
 

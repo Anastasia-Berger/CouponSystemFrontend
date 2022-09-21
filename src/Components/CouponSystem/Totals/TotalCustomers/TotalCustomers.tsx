@@ -6,7 +6,8 @@ import "./TotalCustomers.css";
 
 function TotalCustomers(): JSX.Element {
 
-    const [count, setCount] = useState<number>(store.getState().customersAppState.customers.length);
+    const [count, setCount] = useState<number>
+    (store.getState().customersAppState.customers.length);
 
     useEffect(() => {
         countCustomers()
