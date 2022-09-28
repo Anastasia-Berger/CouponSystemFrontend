@@ -8,6 +8,10 @@ import { BsBoxArrowRight } from "react-icons/bs";
 import "./AuthMenu.css";
 import { IconBase } from "react-icons/lib";
 import { CompanyModel } from "../../../Models/BeansModel/CompanyModel";
+import UserName from "../UserName/UserName";
+import CustomLink from "../../Shared/CustomLink/CustomLink";
+import Avatar from "../Avatar/Avatar";
+import { FiLogIn, FiLogOut } from "react-icons/fi";
 
 
 function AuthMenu(): JSX.Element {
@@ -15,11 +19,9 @@ function AuthMenu(): JSX.Element {
     const [user, setUser] = useState<UserModel>(store.getState().authReducer.user);
 
     useEffect(() => {
-
         const unsubscribe = store.subscribe(() => {
             setUser(store.getState().authReducer?.user || new UserModel());
         });
-
         return unsubscribe;
     }, []);
 
@@ -29,26 +31,37 @@ function AuthMenu(): JSX.Element {
 
             {user?.token ?   // Checks if user is authenticated
                 <>
-                    <Link to='/logout'>
-                        <BsBoxArrowRight size={20} />
-                    </Link>
+                    <CustomLink to='/logout'>
+                        <div className="nav-item">
+                            <FiLogOut size={20} className='react-icons' />
+                        </div>
+                    </CustomLink>
+
+                    <Avatar uuid={store.getState().authReducer.user?.token} />
+
 
                     {/* Display name by user type */}
-                    <span>Hello </span>
+                    <div className='name-area'>Hello <UserName />!</div>
 
                     <br />
-
-
 
                 </>
                 :
                 <>
-                    <span>Hello Sunshine</span>
-                    <br />
-                    <Link to='/register'>Register</Link>
-                    &nbsp;
+                    {/* <CustomLink to='/login'>
+                        <div className="nav-item">
+                            <FiLogIn size={20} className='react-icons' />
+                        </div>
+                    </CustomLink> */}
+                    <Avatar uuid={store.getState().authReducer.user?.token} />
 
-                    <Link to='/login'>Login</Link>
+                    <span>Hello Sunshine!</span>
+                    <br />
+                    {/* <div>
+                        <Link to='/register'>Register </Link>
+                        /
+                        <Link to='/login'> Login</Link>
+                    </div> */}
                 </>
             }
         </div>

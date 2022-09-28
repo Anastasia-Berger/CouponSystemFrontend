@@ -67,12 +67,12 @@ function AddCustomer(): JSX.Element {
             <form onSubmit={handleSubmit(sendToRemote)}>
 
             <hr />
-                <label htmlFor="clientType" className="icon"><FiUser /></label>
+                <label htmlFor="firstName" className="icon"><FiUser /></label>
                 <input type="text" {...register("firstName")} name="firstName" placeholder="First Name" />
                 <span>{errors.firstName?.message}</span>
                 <br />
 
-                <label htmlFor="clientType" className="icon"><FiUser /></label>
+                <label htmlFor="lastName" className="icon"><FiUser /></label>
                 <input type="text" {...register("lastName")} name="lastName" placeholder="Last Name" />
                 <span>{errors.lastName?.message}</span>
                 <br />

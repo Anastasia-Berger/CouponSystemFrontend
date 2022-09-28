@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import { BsGear } from "react-icons/bs";
 import { FiSettings, FiTrash, FiUserX } from "react-icons/fi";
-import { Link, useNavigate } from "react-router-dom";
 import { CustomerModel } from "../../../../../Models/BeansModel/CustomerModel";
 import { ClientType } from "../../../../../Models/Enums/ClientType";
+import { customersDownloadedAction } from "../../../../../Redux/CustomersAppState";
 import store from "../../../../../Redux/store";
-import notify, { ErrMsg } from "../../../../../Services/Notification";
 import { getAllCustomerCoupons } from "../../../../../Web API/CustomerApi";
 import CustomLink from "../../../../Shared/CustomLink/CustomLink";
-import CustomerCoupons from "../../../CustomerArea/CustomerCoupons/CustomerCoupons";
+import CouponItem from "../../../CompanyArea/Coupons/CouponItem/CouponItem";
 import "./CustomerItem.css";
 
 interface CustomerItemProps {
@@ -17,29 +16,23 @@ interface CustomerItemProps {
 
 function CustomerItem(props: CustomerItemProps): JSX.Element {
 
-    const navigate = useNavigate();
-    useEffect(() => {
-        // If we don't have a user object - we are not logged in
-        if (!store.getState().authReducer.user?.token) {
-            notify.error(ErrMsg.PLS_LOGIN);
-            navigate('/login');
-        }
-    }, [])
+    const [customerCoupons, setCustomerCoupons] = useState<CustomerModel[]>
+    (store.getState().customersAppState.coupons);
 
-    const [count, setCount] =
-        useState<number>(store.getState().customersAppState.coupons.length);
-
-    useEffect(() => {
+// Side effects goes here
+useEffect(() => {
+    if (customerCoupons?.length === 0) {
         getAllCustomerCoupons()
-            .then(res => setCount(res.data.length))
-            .catch(err => notify.error(err));
-    }, []);
-
-    useEffect(() => {
-        return store.subscribe(() => {
-            setCount(store.getState().customersAppState.coupons.length); // Will let us notify
-        })
-    }, []);
+            .then((res) => {
+                // Updating Component State
+                setCustomerCoupons(res.data);
+                // Updating global state
+                store.dispatch(customersDownloadedAction(res.data));
+                // notify.success(SccMsg.GOT_TASKS);
+            })
+            .catch((err) => { /*notify.error(err);*/ });
+    }
+}, []);
 
     return (
         <div className="CustomerItem">
@@ -69,12 +62,12 @@ function CustomerItem(props: CustomerItemProps): JSX.Element {
             </div>
 
             <div className="Details">
-                <p>First Name: {props.customer.firstName}</p>
-                <p>Last Name: {props.customer.lastName}</p>
+                <p>Full Name: {props.customer.firstName} {props.customer.lastName}</p>
                 <p>Email: {props.customer.email}</p>
-                <p>Coupons Purchased:
-                    <span className={count > 0 ? "full_count" : "empty_count"}> {count} </span>
-                </p>
+                <p>Password: {props.customer.password}</p>
+                <p>Coupons Purchased: {customerCoupons?.length}
+                    </p>
+                {/* <span className={count > 0 ? "full_count" : "empty_count"}> {count} </span> */}
             </div>
         </div>
     );

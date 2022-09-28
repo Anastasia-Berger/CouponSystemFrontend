@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import App from "../../../App";
 import About from "../../Pages/About/About";
-import CouponsList from "../../CouponSystem/CustomerArea/CouponsList/CouponsList";
 import Credits from "../../Pages/Credits/Credits";
 import Home from "../../Pages/Home/Home";
 import Page404 from "../Page404/Page404";
@@ -25,6 +24,7 @@ import UpdateCoupon from "../../CouponSystem/CompanyArea/Coupons/UpdateCoupon/Up
 import DeleteCoupon from "../../CouponSystem/CompanyArea/Coupons/DeleteCoupon/DeleteCoupon";
 import CustomerCoupons from "../../CouponSystem/CustomerArea/CustomerCoupons/CustomerCoupons";
 import CompanyCoupons from "../../CouponSystem/CompanyArea/Company/CompanyCoupons/CompanyCoupons";
+import CouponsList from "../../CouponSystem/CompanyArea/Coupons/CouponsList/CouponsList";
 
 function Routing(): JSX.Element {
     return (
@@ -42,11 +42,10 @@ function Routing(): JSX.Element {
                 <Route path='/login' element={<Login />} />
                 <Route path='/logout' element={<Logout />} />
 
-
-                <Route path='/companies/home' element={<Home />} />
                 <Route path='/admin/home' element={<Home />} />
+                <Route path='/companies/home' element={<Home />} />
+                <Route path='/customers/home' element={<Home />} />
 
-                <Route path='/coupons' element={<CouponsList />} />
                 <Route path='/about' element={<About />} />
                 <Route path='/credits' element={<Credits />} />
                 <Route path='/*' element={<Page404 />} />
@@ -81,12 +80,13 @@ function Routing(): JSX.Element {
                 <Route path='/companies/:id/coupons/delete/:id' element={<DeleteCoupon />} />
 
                 {/* CUSTOMER FUNCTIONAL PATH */}
-                <Route path='/customers/home' element={<Home />} />
+                
 
-                <Route path='/customers/coupons/' element={<CustomerCoupons />} />
-
+                <Route path='/customers/coupons' element={<CouponsList />} />
+                <Route path='/customers/:id/coupons' element={<CustomerCoupons />} />
                 <Route path='/customers/purchase/:id' element={<PurchaseCoupon />} />
-                <Route path='/details' element={<CustomerDetails />} />
+
+                <Route path='/customers/details' element={<CustomerDetails />} />
 
                 {/* COUPONS GENERAL SORT */}
 

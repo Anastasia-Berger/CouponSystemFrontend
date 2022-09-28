@@ -41,7 +41,6 @@ function Login(): JSX.Element {
                 notify.success(SccMsg.LOGIN);
                 // Updating global state
                 store.dispatch(loginAction(res.data));
-                // navigate('/home');
 
                 if (credentials.clientType === "COMPANY" && res.data.token !== null) {
                     navigate("/companies/home");

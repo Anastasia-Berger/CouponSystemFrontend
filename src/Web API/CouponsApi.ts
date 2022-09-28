@@ -9,12 +9,18 @@ export async function getAllCoupons() {
  
 export async function getAllCouponsByCategory(category: string) {
     return await tokenAxios.get<CouponModel[]>(
-        globals.urls.admin + "/coupons/category?category=" + category
+        globals.urls.companies + "/coupons/category?category=" + category
     );
 }
 
 export async function getAllCouponsByMaxPrice(maxPrice: number) {
     return await tokenAxios.get<CouponModel[]>(
-        globals.urls.admin + "/coupons/price/max?value=" + maxPrice
+        globals.urls.companies + "/coupons/price/max?value=" + maxPrice
+    );
+}
+
+export async function getAllCouponsByCompany(company: string) {
+    return await tokenAxios.get<CouponModel[]>(
+        globals.urls.companies + "/coupons/company?company=" + company
     );
 }

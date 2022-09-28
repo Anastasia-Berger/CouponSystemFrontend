@@ -12,8 +12,8 @@
     width: 15vw;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin: 25% 0;
+    gap: 0.6rem;
+    margin: 15px 0;
 }
 
 .Navbar .CustomLink {
@@ -64,4 +64,10 @@
     background-color: #EC6083;
     border-color: #EC6083;
     color: #fff;
+}
+
+.Dashboard .Character {
+    position: fixed;
+    bottom: 15px;
+    left: 17px;
 }

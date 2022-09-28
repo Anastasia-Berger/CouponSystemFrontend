@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { BsGear, BsTrash } from "react-icons/bs";
+import { FiUserX } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import { CompanyModel } from "../../../../../Models/BeansModel/CompanyModel";
+import { ClientType } from "../../../../../Models/Enums/ClientType";
 import store from "../../../../../Redux/store";
 import notify, { ErrMsg } from "../../../../../Services/Notification";
 import { getAllCompanyCoupons } from "../../../../../Web API/CompanyApi";
+import CustomLink from "../../../../Shared/CustomLink/CustomLink";
 import TotalCoupons from "../../../Totals/TotalCuopons/TotalCoupons";
 import "./CompanyBox.css";
 
@@ -13,16 +16,6 @@ interface CompanyBoxProps {
 }
 
 function CompanyBox(props: CompanyBoxProps): JSX.Element {
-
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        // If we don't have a user object - we are not logged in
-        if (!store.getState().authReducer.user?.token) {
-            notify.error(ErrMsg.PLS_LOGIN);
-            navigate('/login');
-        }
-    }, [])
 
     const [count, setCount] = useState<number>(store.getState().couponsAppState.coupons.length);
     
@@ -33,14 +26,14 @@ function CompanyBox(props: CompanyBoxProps): JSX.Element {
         
     }, []);
 
-    useEffect(() => {
-        return store.subscribe(() => {
+    // useEffect(() => {
+    //     return store.subscribe(() => {
             
-            getAllCompanyCoupons()
-                .then(res => setCount(store.getState().couponsAppState.coupons.length)) // Will let us notify)
-                .catch(err => notify.error(err));
-        })
-    }, []);
+    //         getAllCompanyCoupons()
+    //             .then(res => setCount(store.getState().couponsAppState.coupons.length)) // Will let us notify)
+    //             .catch(err => notify.error(err));
+    //     })
+    // }, []);
 
     return (
 
@@ -48,14 +41,23 @@ function CompanyBox(props: CompanyBoxProps): JSX.Element {
         <div className="CompanyBox">
 
             <div className="buttons">
-
-                {(store.getState().authReducer.user?.clientType === "ADMINISTRATOR") ? (
+                {/* ADMIN EDIT BUTTONS */}
+                {(store.getState().authReducer.user?.clientType == ClientType.ADMINISTRATOR)
+                    ?
                     <>
-                        <Link to={`/companies/delete/${props.company.id}`}><button><BsTrash size={20} /></button></Link>
-                        <Link to={`/companies/edit/${props.company.id}`}><button><BsGear size={20} /></button></Link>
-                    </>
-                ) : (<></>)}
+                        <CustomLink to={`/admin/companies/delete/${props.company.id}`}>
+                            <div className="nav-item">
+                                <BsTrash size={20} className='react-icons' />
+                            </div>
+                        </CustomLink>
 
+                        <CustomLink to={`/admin/companies/edit/${props.company.id}`}>
+                            <div className="nav-item">
+                                <BsGear size={20} className='react-icons' />
+                            </div>
+                        </CustomLink>
+
+                    </> : <></>}
             </div>
 
             <div className="BoxImage">

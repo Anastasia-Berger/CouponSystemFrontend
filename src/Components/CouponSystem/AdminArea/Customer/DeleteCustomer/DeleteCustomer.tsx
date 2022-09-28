@@ -38,7 +38,8 @@ function DeleteCustomer(): JSX.Element {
 
     return (
         <div className="DeleteCustomer">
-            <p>Are you sure you want to delete customer? id={id}?</p>
+            <h2>Delete Customer</h2>
+            <p>Are you sure you want to delete customer id={id}?</p>
             <div className="buttons">
                 <button onClick={yes} className='yes'>Yes</button>
                 <button onClick={no} className='no'>No</button>

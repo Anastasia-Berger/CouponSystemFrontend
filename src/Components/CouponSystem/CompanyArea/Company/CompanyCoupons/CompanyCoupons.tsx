@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CouponModel } from "../../../../../Models/BeansModel/CouponModel";
 import { couponsDownloadedAction } from "../../../../../Redux/CouponsAppState";
 import store from "../../../../../Redux/store";
 import notify, { ErrMsg } from "../../../../../Services/Notification";
 import { getAllCompanyCoupons } from "../../../../../Web API/CompanyApi";
+import AddButton from "../../../../Shared/AddButton/AddButton";
 import EmptyView from "../../../../Shared/EmptyView/EmptyView";
-import CouponItem from "../../../CustomerArea/CouponItem/CouponItem";
+import CouponItem from "../../Coupons/CouponItem/CouponItem";
 import "./CompanyCoupons.css";
 
 function CompanyCoupons(): JSX.Element {
@@ -40,17 +41,20 @@ function CompanyCoupons(): JSX.Element {
 
     return (
         <div className="CompanyCoupons">
-			{(coupons?.length > 0)
-                ?
-                <>
-                    <div className="CouponsContainer">
-                        {coupons.map((coupon) => <CouponItem key={coupon.id} coupon={coupon} />)}
+			<div className="page-title">
+                        <h2>Company Coupons</h2>
+                        <Link to="/companies/coupons/add">
+                            <AddButton value={"Coupon"} />
+                        </Link>
                     </div>
-                </>
-                :
-                <>
-                    <EmptyView msg="NO COUPONS FOR YOU" />
-                </>}
+                    {(coupons?.length > 0) ?
+                        <>
+                            <div className="CouponsContainer">
+                                {coupons.map((coupon) => <CouponItem key={coupon.id} coupon={coupon} />)}
+                            </div>
+                        </>
+                        :
+                        <> <EmptyView msg="NO COUPONS FOR YOU" /> </>}
 
         </div>
     );

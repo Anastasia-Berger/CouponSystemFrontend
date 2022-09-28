@@ -7,6 +7,7 @@ import { companiesDownloadedAction } from "../../../../../Redux/CompaniesAppStat
 import store from "../../../../../Redux/store";
 import notify, { ErrMsg, SccMsg } from "../../../../../Services/Notification";
 import { getAllCompanies } from "../../../../../Web API/AdminApi";
+import AddButton from "../../../../Shared/AddButton/AddButton";
 import CustomLink from "../../../../Shared/CustomLink/CustomLink";
 import EmptyView from "../../../../Shared/EmptyView/EmptyView";
 import CompanyBox from "../CompanyBox/CompanyBox";
@@ -43,15 +44,19 @@ function CompaniesList(): JSX.Element {
 
     return (
         <div className="CompaniesList">
-            <h2>Companies</h2>
+            
+            <div className="page-title">
+                <h2>Our Companies</h2>
+                {(store.getState().authReducer.user.clientType == ClientType.ADMINISTRATOR) ?
+                    <>
+                        <Link to="/admin/companies/add">
+                            {/* <FiUserPlus size={28} /> */}
+                            <AddButton value={"Company"} />
+                        </Link>
+                    </> : <></>}
+            </div>
 
-
-            {(store.getState().authReducer.user.clientType == ClientType.ADMINISTRATOR) ?
-                <><Link to="/companies/add"><button><FiUserPlus size={30} /></button></Link></>
-                : <></>}
-
-            {(companies?.length > 0)
-                ?
+            {(companies?.length > 0) ?
                 <>
                     <div className="CompaniesContainer">
                         {companies.map((company) => <CompanyBox key={company.id} company={company} />)}

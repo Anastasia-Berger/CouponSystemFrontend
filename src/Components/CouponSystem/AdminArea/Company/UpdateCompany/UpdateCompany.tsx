@@ -9,6 +9,8 @@ import "./UpdateCompany.css";
 import { updateCompany } from "../../../../../Web API/AdminApi";
 import notify, { ErrMsg, SccMsg } from "../../../../../Services/Notification";
 import { companyUpdatedAction } from "../../../../../Redux/CompaniesAppState";
+import { FiKey, FiUser } from "react-icons/fi";
+import { BsEnvelope } from "react-icons/bs";
 
 function UpdateCompany(): JSX.Element {
     const navigate = useNavigate();
@@ -19,13 +21,13 @@ function UpdateCompany(): JSX.Element {
             notify.error(ErrMsg.PLS_LOGIN);
             navigate('/login');
         }
-    },[])
+    }, [])
 
     const params = useParams();
     const id = +(params.id || '');
 
     const [company, setCompany] = useState<CompanyModel>
-    (store.getState().companiesAppState.companies.filter(company => company.id === id)[0]);
+        (store.getState().companiesAppState.companies.filter(company => company.id === id)[0]);
 
     const schema = yup.object().shape({
         name:
@@ -57,7 +59,7 @@ function UpdateCompany(): JSX.Element {
                 notify.success(SccMsg.UPDATE_COMPANY);
                 // Updating global state
                 store.dispatch(companyUpdatedAction(res.data));
-                navigate('/companies');
+                navigate('/admin/companies');
 
             })
             .catch(err => {
@@ -70,31 +72,27 @@ function UpdateCompany(): JSX.Element {
 
     return (
         <div className="UpdateCompany">
+
             <h2>Update company details: </h2>
             <form onSubmit={handleSubmit(sendToRemote)}>
+            <hr />
 
-                <label htmlFor="name">name</label>
-                <br />
-                <input type="text" {...register("name")} name="name" placeholder="name" />
-                <br />
+                <label htmlFor="clientType" className="icon"><FiUser /></label>
+                <input type="text" {...register("name")} name="name" placeholder="Name" />
                 <span>{errors.name?.message}</span>
                 <br />
 
-                <label htmlFor="email">email</label>
-                <br />
-                <input type="email" {...register("email")} name="email" placeholder="email" />
-                <br />
+                <label htmlFor="email" className="icon"><BsEnvelope /></label>
+                <input type="email" {...register("email")} name="email" placeholder="Email" />
                 <span>{errors.email?.message}</span>
                 <br />
 
-                <label htmlFor="password">password</label>
-                <br />
-                <input type="password" {...register("password")} name="password" placeholder="password" />
-                <br />
+                <label htmlFor="password" className="icon"><FiKey /></label>
+                <input type="password" {...register("password")} name="password" placeholder="Password" />
                 <span>{errors.password?.message}</span>
                 <br />
 
-                <button className="button-app" disabled={!isValid}>UPDATE</button>
+                <button disabled={!isDirty} className="button-app" >UPDATE</button>
             </form>
         </div>
     );

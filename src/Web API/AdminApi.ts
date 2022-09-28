@@ -61,7 +61,6 @@ export async function getSingleCustomer(id: number) {
     );
 }
 
-
 export async function countCompanies() {
     return await tokenAxios.get<number>(globals.urls.admin + '/companies/count');
 };
@@ -72,4 +71,8 @@ export async function countCustomers() {
 
 export async function countCoupons() {
     return await tokenAxios.get<number>(globals.urls.admin + '/coupons/count');
+};
+
+export async function countCustomerCoupons(customerId: number) {
+    return await tokenAxios.get<number>(globals.urls.admin + 'coupons/' + customerId + '/count');
 };

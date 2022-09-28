@@ -9,6 +9,8 @@ import notify, { ErrMsg, SccMsg } from "../../../../../Services/Notification";
 import store from "../../../../../Redux/store";
 import { companyAddedAction } from "../../../../../Redux/CompaniesAppState";
 import { addCompany } from "../../../../../Web API/AdminApi";
+import { FiKey, FiUser } from "react-icons/fi";
+import { BsEnvelope } from "react-icons/bs";
 
 function AddCompany(): JSX.Element {
     const navigate = useNavigate();
@@ -46,7 +48,7 @@ function AddCompany(): JSX.Element {
                 notify.success(SccMsg.ADD_COMPANY);
                 // Updating global state
                 store.dispatch(companyAddedAction(res.data));
-                navigate('/companies');
+                navigate('/admin/companies');
 
             })
             .catch(err => {
@@ -60,29 +62,24 @@ function AddCompany(): JSX.Element {
         <div className="AddCompany">
             <h2>Add new Company</h2>
             <form onSubmit={handleSubmit(sendToRemote)}>
+                <hr />
 
-                <label htmlFor="name">name</label>
-                <br />
-                <input type="text" {...register("name")} name="name" placeholder="name" />
-                <br />
+                <label htmlFor="name" className="icon"><FiUser /></label>
+                <input type="text" {...register("name")} name="name" placeholder="Name" />
                 <span>{errors.name?.message}</span>
                 <br />
 
-                <label htmlFor="email">email</label>
-                <br />
-                <input type="email" {...register("email")} name="email" placeholder="email" />
-                <br />
+                <label htmlFor="email" className="icon"><BsEnvelope /></label>
+                <input type="email" {...register("email")} name="email" placeholder="Email" />
                 <span>{errors.email?.message}</span>
                 <br />
 
-                <label htmlFor="password">password</label>
-                <br />
-                <input type="password" {...register("password")} name="password" placeholder="password" />
-                <br />
+                <label htmlFor="password" className="icon"><FiKey /></label>
+                <input type="password" {...register("password")} placeholder="Password" />
                 <span>{errors.password?.message}</span>
                 <br />
-                
-                <button className="button-app" disabled={!isValid}>Create Task</button>
+
+                <button className="button-app" disabled={!isValid}>ADD</button>
             </form>
         </div>
     );

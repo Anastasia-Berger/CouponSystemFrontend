@@ -18,9 +18,6 @@ function CustomersList(): JSX.Element {
 
     const navigate = useNavigate();
 
-    const [customers, setCustomers] = useState<CustomerModel[]>
-        (store.getState().customersAppState.customers);
-
     useEffect(() => {
         // If we don't have a user object - we are not logged in
         if (!store.getState().authReducer.user?.token) {
@@ -28,6 +25,9 @@ function CustomersList(): JSX.Element {
             navigate('/login');
         }
     }, [])
+
+    const [customers, setCustomers] = useState<CustomerModel[]>
+        (store.getState().customersAppState.customers);
 
     // Side effects goes here
     useEffect(() => {
@@ -47,6 +47,7 @@ function CustomersList(): JSX.Element {
 
     return (
         <div className="CustomersList">
+            
             <div className="page-title">
                 <h2>Our Customers</h2>
                 {(store.getState().authReducer.user.clientType == ClientType.ADMINISTRATOR) ?
@@ -56,11 +57,9 @@ function CustomersList(): JSX.Element {
                             <AddButton value={"Customer"} />
                         </Link>
                     </> : <></>}
-
             </div>
 
-            {(customers?.length > 0)
-                ?
+            {(customers?.length > 0) ?
                 <>
                     <div className="Container">
                         {customers.map((customer) => <CustomerItem key={customer.id} customer={customer} />)}

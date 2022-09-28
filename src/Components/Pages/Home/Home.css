@@ -7,8 +7,8 @@
 
 /* From uiverse.io by @joe-watson-sbf */
 .home-card {
-    width: 600px;
-    height: 600px;
+    width: 80%;
+    height:350px;
     border-radius: 30px;
     /* background: #212121; */
     display: flex;

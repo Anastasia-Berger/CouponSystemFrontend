@@ -9,9 +9,9 @@ class DevelopmentGlobals extends Globals {
         customers:  'http://localhost:9090/api/customers',
         login:      'http://localhost:9090/api/login',
         register:   'http://localhost:9090/api/register',
-        users:      '/Assets/Users/',
-        astronaut:  '/Assets/Astronaut/jpg/',
-        categories: '/Assets/Categories/jpg/'
+        users:      '%PUBLIC_URL%/Assets/Users/',
+        astronaut:  '%PUBLIC_URL%/Assets/Astronaut/jpg/',
+        categories: '%PUBLIC_URL%/Assets/Categories/jpg/'
     }
 }
 
@@ -23,9 +23,9 @@ class ProductionGlobals extends Globals {
         customers:  '/customers',
         login:      '/login',
         register:   '/register',
-        users:      '/Assets/Users/',
-        astronaut:  '/Assets/Astronaut/jpg/',
-        categories: '/Assets/Categories/jpg/'
+        users:      '%PUBLIC_URL%/Assets/Users/',
+        astronaut:  '%PUBLIC_URL%/Assets/Astronaut/jpg/',
+        categories: '%PUBLIC_URL%/Assets/Categories/jpg/'
     }
 }
 

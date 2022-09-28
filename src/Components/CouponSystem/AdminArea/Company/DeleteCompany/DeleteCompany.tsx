@@ -29,7 +29,7 @@ function DeleteCompany(): JSX.Element {
                 notify.success(SccMsg.DELETE_COMPANY);
                 // Updating global state
                 store.dispatch(companyDeletedAction(id));
-                navigate('/companies');
+                navigate('/admin/companies');
             })
             .catch(err => notify.error(err));
     }
@@ -40,8 +40,8 @@ function DeleteCompany(): JSX.Element {
 
     return (
         <div className="DeleteCompany">
-            <h2>Delete Task</h2>
-            <p>Are you sure you want to delete company? id={id}?</p>
+            <h2>Delete Company</h2>
+            <p>Are you sure you want to delete company id={id}?</p>
             <div>
                 <button onClick={yes}>Yes</button>
                 <button onClick={no}>No</button>
