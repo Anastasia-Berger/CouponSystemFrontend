@@ -6,8 +6,8 @@ import store from "../../../../Redux/store";
 import notify, { ErrMsg } from "../../../../Services/Notification";
 import { getAllCustomerCoupons, getCustomerDetails } from "../../../../Web API/CustomerApi";
 import EmptyView from "../../../Shared/EmptyView/EmptyView";
-import CustomerCoupons from "../CustomerCoupons/CustomerCoupons";
 import CustomerItem from "../../AdminArea/Customer/CustomerItem/CustomerItem";
+import CustomerCoupons from "../CustomerCoupons/CustomerCoupons";
 import "./CustomerDetails.css";
 
 function CustomerDetails(): JSX.Element {
