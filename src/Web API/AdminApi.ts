@@ -1,4 +1,5 @@
 import { CompanyModel } from "../Models/BeansModel/CompanyModel"
+import { CouponModel } from "../Models/BeansModel/CouponModel";
 import { CustomerModel } from "../Models/BeansModel/CustomerModel";
 import globals from "../Services/Globals";
 import tokenAxios from "../Services/InterceptorAxios";
@@ -61,6 +62,11 @@ export async function getSingleCustomer(id: number) {
     );
 }
 
+export async function getAllCoupons() {
+    return await tokenAxios.get<CouponModel[]>(
+        globals.urls.admin + "/coupons");
+}
+
 export async function countCompanies() {
     return await tokenAxios.get<number>(globals.urls.admin + '/companies/count');
 };
@@ -73,6 +79,12 @@ export async function countCoupons() {
     return await tokenAxios.get<number>(globals.urls.admin + '/coupons/count');
 };
 
+
+
+export async function countCompanyCoupons(companyId: number) {
+    return await tokenAxios.get<number>(globals.urls.admin + '/companies/coupons/count/' + companyId);
+};
+
 export async function countCustomerCoupons(customerId: number) {
-    return await tokenAxios.get<number>(globals.urls.admin + 'coupons/' + customerId + '/count');
+    return await tokenAxios.get<number>(globals.urls.admin + '/customer/coupons/count/' + customerId);
 };

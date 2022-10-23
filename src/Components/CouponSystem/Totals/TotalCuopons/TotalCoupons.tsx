@@ -9,16 +9,7 @@ import "./TotalCoupons.css";
 
 function TotalCoupons(): JSX.Element {
 
-    const navigate = useNavigate();
     const [count, setCount] = useState<number>(store.getState().couponsAppState.coupons.length);
-
-    useEffect(() => {
-        // If we don't have a user object - we are not logged in
-        if (!store.getState().authReducer.user?.token) {
-            notify.error(ErrMsg.PLS_LOGIN);
-            navigate('/login');
-        }
-    }, [])
 
     useEffect(() => {
 

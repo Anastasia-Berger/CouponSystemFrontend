@@ -35,7 +35,7 @@ function DeleteCompany(): JSX.Element {
     }
 
     const no = () => {
-        navigate('/companies');
+        navigate('/admin/companies');
     }
 
     return (

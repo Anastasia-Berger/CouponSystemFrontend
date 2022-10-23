@@ -6,7 +6,7 @@ import store from "../../../../Redux/store";
 import notify, { ErrMsg } from "../../../../Services/Notification";
 import { getAllCustomerCoupons, getCustomerDetails } from "../../../../Web API/CustomerApi";
 import EmptyView from "../../../Shared/EmptyView/EmptyView";
-import CustomerItem from "../../AdminArea/Customer/CustomerItem/CustomerItem";
+import CustomerItem from "../CustomerItem/CustomerItem";
 import CustomerCoupons from "../CustomerCoupons/CustomerCoupons";
 import "./CustomerDetails.css";
 

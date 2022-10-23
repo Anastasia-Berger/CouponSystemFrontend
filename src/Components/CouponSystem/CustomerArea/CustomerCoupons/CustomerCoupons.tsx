@@ -8,7 +8,7 @@ import notify, { ErrMsg, SccMsg } from "../../../../Services/Notification";
 import { getAllCustomerCoupons } from "../../../../Web API/CustomerApi";
 import CustomLink from "../../../Shared/CustomLink/CustomLink";
 import EmptyView from "../../../Shared/EmptyView/EmptyView";
-import CouponItem from "../../CompanyArea/Coupons/CouponItem/CouponItem";
+import CouponItem from "../../CouponArea/CouponItem/CouponItem";
 import "./CustomerCoupons.css";
 
 function CustomerCoupons(): JSX.Element {

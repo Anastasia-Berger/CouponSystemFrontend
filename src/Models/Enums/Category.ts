@@ -7,5 +7,5 @@ export enum Category {
     PHARMA = 'PHARMA',
     SPORTS = 'SPORTS',
     ELECTRONICS = 'ELECTRONICS',
-    GAMING= 'GAMING'
+    GAMING = 'GAMING'
 }

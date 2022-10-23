@@ -3,10 +3,10 @@ import { CustomerModel } from "../Models/BeansModel/CustomerModel";
 import globals from "../Services/Globals"
 import tokenAxios from "../Services/InterceptorAxios"
 
-export async function getAllCoupons() {
-    return await tokenAxios.get<CouponModel[]>(
-        globals.urls.customers + "/coupons");
-}
+// export async function getAllCoupons() {
+//     return await tokenAxios.get<CouponModel[]>(
+//         globals.urls.customers + "/coupons");
+// }
 
 export async function purchaseCoupon(coupon: CouponModel) {
     return await tokenAxios.post<CouponModel>(

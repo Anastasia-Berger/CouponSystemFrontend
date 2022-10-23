@@ -27,7 +27,8 @@ function UpdateCustomer(): JSX.Element {
     const id = +(params.id || '');
 
     const [customer, setCustomer] = useState<CustomerModel>
-    (store.getState().customersAppState.customers.filter(customer => customer.id === id)[0]);
+    (store.getState().customersAppState.customers.filter(
+        customer => customer.id === id)[0]);
 
     const schema = yup.object().shape({
         firstName:
@@ -48,9 +49,14 @@ function UpdateCustomer(): JSX.Element {
 
     let defaultValuesObj = { ...customer };
 
-    const { register, handleSubmit, control, formState: { errors, isDirty, isValid } }
+    const { register, handleSubmit, control, formState: 
+        { errors, isDirty, isValid } }
         = useForm<CustomerModel>(
-            { defaultValues: defaultValuesObj, mode: "all", resolver: yupResolver(schema) });
+            { 
+                defaultValues: defaultValuesObj, 
+                mode: "all", 
+                resolver: yupResolver(schema) 
+            });
 
     const { dirtyFields } = useFormState({
         control

@@ -75,22 +75,24 @@ function Dashboard(): JSX.Element {
                 <>
                     <nav className="Navbar">
 
-                        <CustomLink to="admin/home">
+                        <CustomLink to="companies/home">
                             <div className="nav-item">
                                 <BsHouse size={20} className='react-icons' />
                                 <span>Home</span>
                             </div>
                         </CustomLink>
 
-                        <CustomLink to="companies/details">
-                            <BsGear size={20} className='react-icons' />
-                            <span>Profile</span>
-                        </CustomLink>
-
                         <CustomLink to="companies/coupons">
                             <div className="nav-item">
                                 <FiGift size={20} className='react-icons' />
                                 <span>Coupons / <TotalCoupons /></span>
+                            </div>
+                        </CustomLink>
+                        
+                        <CustomLink to="companies/details">
+                            <div className="nav-item">
+                                <BsGear size={20} className='react-icons' />
+                                <span>Profile</span>
                             </div>
                         </CustomLink>
 

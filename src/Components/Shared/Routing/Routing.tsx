@@ -5,8 +5,8 @@ import Credits from "../../Pages/Credits/Credits";
 import Home from "../../Pages/Home/Home";
 import Page404 from "../Page404/Page404";
 import "./Routing.css";
-import AddCoupon from "../../CouponSystem/CompanyArea/Coupons/AddCoupon/AddCoupon";
-import CompaniesList from "../../CouponSystem/AdminArea/Company/CompaniesList/CompaniesList";
+import AddCoupon from "../../CouponSystem/CouponArea/AddCoupon/AddCoupon";
+import CompaniesList from "../../CouponSystem/CompanyArea/CompaniesList/CompaniesList";
 import AddCompany from "../../CouponSystem/AdminArea/Company/AddCompany/AddCompany";
 import Register from "../../AuthArea/Register/Register";
 import Login from "../../AuthArea/Login/Login";
@@ -16,15 +16,15 @@ import CustomerDetails from "../../CouponSystem/CustomerArea/CustomerDetails/Cus
 import AddCustomer from "../../CouponSystem/AdminArea/Customer/AddCustomer/AddCustomer";
 import UpdateCustomer from "../../CouponSystem/AdminArea/Customer/UpdateCustomer/UpdateCustomer";
 import DeleteCustomer from "../../CouponSystem/AdminArea/Customer/DeleteCustomer/DeleteCustomer";
-import CustomersList from "../../CouponSystem/AdminArea/Customer/CustomersList/CustomersList";
+import CustomersList from "../../CouponSystem/CustomerArea/CustomersList/CustomersList";
 import UpdateCompany from "../../CouponSystem/AdminArea/Company/UpdateCompany/UpdateCompany";
 import DeleteCompany from "../../CouponSystem/AdminArea/Company/DeleteCompany/DeleteCompany";
-import CompanyDetails from "../../CouponSystem/CompanyArea/Company/CompanyDetails/CompanyDetails";
-import UpdateCoupon from "../../CouponSystem/CompanyArea/Coupons/UpdateCoupon/UpdateCoupon";
-import DeleteCoupon from "../../CouponSystem/CompanyArea/Coupons/DeleteCoupon/DeleteCoupon";
+import CompanyDetails from "../../CouponSystem/CompanyArea/CompanyDetails/CompanyDetails";
+import UpdateCoupon from "../../CouponSystem/CouponArea/UpdateCoupon/UpdateCoupon";
+import DeleteCoupon from "../../CouponSystem/CouponArea/DeleteCoupon/DeleteCoupon";
 import CustomerCoupons from "../../CouponSystem/CustomerArea/CustomerCoupons/CustomerCoupons";
-import CompanyCoupons from "../../CouponSystem/CompanyArea/Company/CompanyCoupons/CompanyCoupons";
-import CouponsList from "../../CouponSystem/CompanyArea/Coupons/CouponsList/CouponsList";
+import CompanyCoupons from "../../CouponSystem/CompanyArea/CompanyCoupons/CompanyCoupons";
+import CouponsList from "../../CouponSystem/CouponArea/CouponsList/CouponsList";
 
 function Routing(): JSX.Element {
     return (
@@ -56,28 +56,25 @@ function Routing(): JSX.Element {
                 <Route path='/admin/customers' element={<CustomersList />} />
                 <Route path='/admin/coupons' element={<CouponsList />} />
 
-                <Route path='/admin/companies/:id' element={<CompanyDetails />} />
-                <Route path='/admin/customers/:id' element={<CustomerDetails />} />
+                <Route path='/admin/companies/details/:id' element={<CompanyDetails />} />
+                <Route path='/admin/customers/details/:id' element={<CustomerDetails />} />
 
                 <Route path='/admin/companies/add' element={<AddCompany />} />
                 <Route path='/admin/customers/add' element={<AddCustomer />} />
-                <Route path='/admin/coupons/add' element={<AddCoupon />} />
 
                 <Route path='/admin/companies/edit/:id' element={<UpdateCompany />} />
                 <Route path='/admin/customers/edit/:id' element={<UpdateCustomer />} />
-                <Route path='/admin/coupons/edit/:id' element={<UpdateCoupon />} />
 
                 <Route path='/admin/companies/delete/:id' element={<DeleteCompany />} />
                 <Route path='/admin/customers/delete/:id' element={<DeleteCustomer />} />
-                <Route path='/admin/coupons/delete/:id' element={<DeleteCoupon />} />
 
                 {/* COMPANY FUNCTIONAL PATH */}
 
-                <Route path='/companies/:id/coupons' element={<CompanyCoupons />} />
+                <Route path='/companies/coupons' element={<CompanyCoupons />} />
 
-                {/* <Route path='/companies/:id/coupons/add' element={<AddCoupon />} /> */}
-                <Route path='/companies/:id/coupons/edit/:id' element={<UpdateCoupon />} />
-                <Route path='/companies/:id/coupons/delete/:id' element={<DeleteCoupon />} />
+                <Route path='/companies/coupons/add' element={<AddCoupon />} />
+                <Route path='/companies/coupons/edit/:id' element={<UpdateCoupon />} />
+                <Route path='/companies/coupons/delete/:id' element={<DeleteCoupon />} />
 
                 {/* CUSTOMER FUNCTIONAL PATH */}
                 

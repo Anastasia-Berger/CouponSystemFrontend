@@ -27,7 +27,8 @@ function UpdateCompany(): JSX.Element {
     const id = +(params.id || '');
 
     const [company, setCompany] = useState<CompanyModel>
-        (store.getState().companiesAppState.companies.filter(company => company.id === id)[0]);
+        (store.getState().companiesAppState.companies.filter(
+            company => company.id === id)[0]);
 
     const schema = yup.object().shape({
         name:
@@ -45,22 +46,26 @@ function UpdateCompany(): JSX.Element {
 
     let defaultValuesObj = { ...company };
 
-    const { register, handleSubmit, control, formState: { errors, isDirty, isValid } }
-        = useForm<CompanyModel>({ defaultValues: defaultValuesObj, mode: "all", resolver: yupResolver(schema) });
+    const { register, handleSubmit, control, formState: 
+        { errors, isDirty, isValid } }
+        = useForm<CompanyModel>(
+            { 
+                defaultValues: defaultValuesObj, 
+                mode: "all", 
+                resolver: yupResolver(schema) 
+            });
 
     const { dirtyFields } = useFormState({
         control
     });
 
     const sendToRemote = async (company: CompanyModel) => {
-
         await updateCompany(id, company)
             .then(res => {
                 notify.success(SccMsg.UPDATE_COMPANY);
                 // Updating global state
                 store.dispatch(companyUpdatedAction(res.data));
                 navigate('/admin/companies');
-
             })
             .catch(err => {
                 notify.error(err);
