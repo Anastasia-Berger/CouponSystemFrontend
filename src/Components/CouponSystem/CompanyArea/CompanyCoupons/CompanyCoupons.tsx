@@ -49,7 +49,7 @@ function CompanyCoupons(): JSX.Element {
                     </div>
                     {(coupons?.length > 0) ?
                         <>
-                            <div className="CouponsContainer">
+                            <div className="Container">
                                 {coupons.map((coupon) => <CouponItem key={coupon.id} coupon={coupon} />)}
                             </div>
                         </>

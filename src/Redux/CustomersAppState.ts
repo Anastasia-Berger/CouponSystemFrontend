@@ -60,7 +60,8 @@ export function customersReducer(currentState: CustomersAppState = new Customers
             newState.customers.push(action.payload);
             break;
         case CustomersActionType.CustomerUpdated:
-            const idx = newState.customers.findIndex(customer => customer.id === action.payload.id);
+            const idx = newState.customers.findIndex(
+                customer => customer.id === action.payload.id);
             newState.customers[idx] = action.payload;
             break;
         case CustomersActionType.CustomerDeleted:

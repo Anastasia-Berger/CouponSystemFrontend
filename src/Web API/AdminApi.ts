@@ -62,11 +62,6 @@ export async function getSingleCustomer(id: number) {
     );
 }
 
-export async function getAllCoupons() {
-    return await tokenAxios.get<CouponModel[]>(
-        globals.urls.admin + "/coupons");
-}
-
 export async function countCompanies() {
     return await tokenAxios.get<number>(globals.urls.admin + '/companies/count');
 };

@@ -5,3 +5,8 @@
     flex-wrap: wrap;
     align-items: center;
 }
+
+.Container{
+    display: flex;
+    flex-direction: column;
+}

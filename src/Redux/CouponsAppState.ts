@@ -1,5 +1,6 @@
 import { CouponModel } from "../Models/BeansModel/CouponModel";
 
+
 // Step 1 - Create AppState and manage the collection once and in a centralize place
 export class CouponsAppState {
     public coupons: CouponModel[] = [];
@@ -44,7 +45,12 @@ export function couponsClearAction(): CouponAction {
 }
 
 // Step 5 - Reducer function perform the required action
-export function couponsReducer(currentState: CouponsAppState = new CouponsAppState(), action: CouponAction): CouponsAppState {
+export function couponsReducer(
+    currentState: CouponsAppState = new CouponsAppState(),
+    action: CouponAction
+)
+    :
+    CouponsAppState {
     const newState = { ...currentState } //Spread Operator
     switch (action.type) {
         case CouponsActionType.CouponsDownloaded:

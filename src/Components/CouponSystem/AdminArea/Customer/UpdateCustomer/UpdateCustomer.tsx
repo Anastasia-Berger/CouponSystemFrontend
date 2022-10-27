@@ -49,8 +49,7 @@ function UpdateCustomer(): JSX.Element {
 
     let defaultValuesObj = { ...customer };
 
-    const { register, handleSubmit, control, formState: 
-        { errors, isDirty, isValid } }
+    const { register, handleSubmit, control, formState: { errors, isDirty, isValid } }
         = useForm<CustomerModel>(
             { 
                 defaultValues: defaultValuesObj, 
@@ -58,9 +57,7 @@ function UpdateCustomer(): JSX.Element {
                 resolver: yupResolver(schema) 
             });
 
-    const { dirtyFields } = useFormState({
-        control
-    });
+    const { dirtyFields } = useFormState({control});
 
     const sendToRemote = async (customer: CustomerModel) => {
         await updateCustomer(id, customer)
@@ -83,23 +80,35 @@ function UpdateCustomer(): JSX.Element {
             <form onSubmit={handleSubmit(sendToRemote)}>
 
             <hr />
-                <label htmlFor="clientType" className="icon"><FiUser /></label>
-                <input type="text" {...register("firstName")} name="firstName" placeholder="First Name" />
+                <label htmlFor="firstName" className="icon"><FiUser /></label>
+                <input 
+                    type="text" {...register("firstName")} 
+                    name="firstName" 
+                    placeholder="First Name" />
                 <span>{errors.firstName?.message}</span>
                 <br />
 
-                <label htmlFor="clientType" className="icon"><FiUser /></label>
-                <input type="text" {...register("lastName")} name="lastName" placeholder="Last Name" />
+                <label htmlFor="lastName" className="icon"><FiUser /></label>
+                <input 
+                    type="text" {...register("lastName")} 
+                    name="lastName" 
+                    placeholder="Last Name" />
                 <span>{errors.lastName?.message}</span>
                 <br />
 
                 <label htmlFor="email" className="icon"><BsEnvelope /></label>
-                <input type="email" {...register("email")} name="email" placeholder="Email" />
+                <input 
+                    type="email" {...register("email")} 
+                    name="email" 
+                    placeholder="Email" />
                 <span>{errors.email?.message}</span>
                 <br />
 
                 <label htmlFor="password" className="icon"><FiKey /></label>
-                <input type="password" {...register("password")} name="password" placeholder="Password" />
+                <input 
+                    type="password" {...register("password")} 
+                    name="password" 
+                    placeholder="Password" />
                 <span>{errors.password?.message}</span>
                 <br />
 

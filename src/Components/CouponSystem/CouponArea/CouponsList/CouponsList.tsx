@@ -5,7 +5,9 @@ import { ClientType } from "../../../../Models/Enums/ClientType";
 import { couponsDownloadedAction } from "../../../../Redux/CouponsAppState";
 import store from "../../../../Redux/store";
 import notify, { ErrMsg } from "../../../../Services/Notification";
-import { getAllCoupons } from "../../../../Web API/AdminApi";
+// import { getAllCoupons } from "../../../../Web API/CouponsApi";
+import { getAllCoupons } from "../../../../Web API/CustomerApi";
+
 import AddButton from "../../../Shared/AddButton/AddButton";
 import EmptyView from "../../../Shared/EmptyView/EmptyView";
 import CouponItem from "../CouponItem/CouponItem";
@@ -40,8 +42,11 @@ function CouponsList(): JSX.Element {
 
     return (
         <div className="CouponsList">
+
             <div className="page-title">
+
                 <h2>All Coupons</h2>
+
                 {(store.getState().authReducer.user?.clientType == ClientType.ADMINISTRATOR ?
                     <>
                         <Link to="/admin/coupons/add">
@@ -49,7 +54,7 @@ function CouponsList(): JSX.Element {
                         </Link>
                     </> : <></>)}
 
-                    {(store.getState().authReducer.user?.clientType == ClientType.COMPANY ?
+                {(store.getState().authReducer.user?.clientType == ClientType.COMPANY ?
                     <>
                         <Link to="/companies/coupons/add">
                             <AddButton value={"Coupon"} />
@@ -58,9 +63,11 @@ function CouponsList(): JSX.Element {
             </div>
 
             {(coupons?.length > 0) ?
-                <> <div className="Container">
-                    {coupons.map((coupon) => <CouponItem key={coupon.id} coupon={coupon} />)}
-                </div> </>
+                <>
+                    <div className="Container">
+                        {coupons.map((coupon) => <CouponItem key={coupon.id} coupon={coupon} />)}
+                    </div>
+                </>
                 :
                 <> <EmptyView msg="NO COUPONS FOR YOU" /> </>}
         </div>

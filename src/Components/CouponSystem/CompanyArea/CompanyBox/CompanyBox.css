@@ -16,3 +16,8 @@
 
     box-shadow: 5px 2px 24px 0px rgba(66, 68, 90, 0.26);
 }
+
+.CompanyCouponsInBox{
+    display: flex;
+    
+}

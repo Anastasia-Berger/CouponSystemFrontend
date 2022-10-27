@@ -70,6 +70,8 @@ function Routing(): JSX.Element {
 
                 {/* COMPANY FUNCTIONAL PATH */}
 
+                <Route path='/companies/details' element={<CompanyDetails />} />
+
                 <Route path='/companies/coupons' element={<CompanyCoupons />} />
 
                 <Route path='/companies/coupons/add' element={<AddCoupon />} />

@@ -4,6 +4,7 @@ import { FiUserX } from "react-icons/fi";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { number } from "yup";
 import { CompanyModel } from "../../../../Models/BeansModel/CompanyModel";
+import { CouponModel } from "../../../../Models/BeansModel/CouponModel";
 import { ClientType } from "../../../../Models/Enums/ClientType";
 import store from "../../../../Redux/store";
 import notify, { ErrMsg } from "../../../../Services/Notification";
@@ -21,7 +22,6 @@ interface CompanyBoxProps {
 function CompanyBox(props: CompanyBoxProps): JSX.Element {
 
     return (
-
 
         <div className="CompanyBox">
 
@@ -52,8 +52,7 @@ function CompanyBox(props: CompanyBoxProps): JSX.Element {
             <div className="CompanyDetails">
                 <p>ID : {props.company.id} </p>
                 <p>Name : {props.company.name}</p>
-                <p>Coupons : <TotalCouponsById id={props.company.id || 0} /></p>
-
+                <div className="CompanyCouponsInBox"><span>Coupons: </span> <TotalCouponsById id={props.company.id || 0} /></div>
             </div>
 
         </div >
