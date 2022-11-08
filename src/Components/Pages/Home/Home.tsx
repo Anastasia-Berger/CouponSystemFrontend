@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ClientType } from "../../../Models/Enums/ClientType";
 import store from "../../../Redux/store";
 import notify, { ErrMsg } from "../../../Services/Notification";
-import CategoryList from "../../CouponSystem/CouponArea/CategoryList/CategoryList";
+import CategoriesList from "../../CategoriesArea/CategoriesList/CategoriesList";
 import CustomLink from "../../Shared/CustomLink/CustomLink";
 import EmptyView from "../../Shared/EmptyView/EmptyView";
 import "./Home.css";
@@ -46,7 +46,7 @@ function Home(): JSX.Element {
                 ?
                 <>
                     <div className="Container">
-                        <CategoryList />
+                        <CategoriesList />
                     </div>
                 </>
                 :

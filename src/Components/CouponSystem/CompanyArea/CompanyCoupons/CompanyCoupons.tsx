@@ -47,6 +47,7 @@ function CompanyCoupons(): JSX.Element {
                             <AddButton value={"Coupon"} />
                         </Link>
                     </div>
+                    
                     {(coupons?.length > 0) ?
                         <>
                             <div className="Container">

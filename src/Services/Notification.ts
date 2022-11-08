@@ -29,11 +29,14 @@ export enum SccMsg {
 }
 
 
+
+
 export enum ErrMsg {
     PLS_LOGIN = 'please login',
     FAIL_EDIT_COMPANIES = "failed to edit company",
     WRONG_LOGIN_DETAILS = "Wrong login details. Please try again",
-    COUPON_NOT_FOUND = "COUPON_NOT_FOUND"
+    COUPON_NOT_FOUND = "COUPON_NOT_FOUND",
+    COUPON_ALREADY_PURCHASED = "COUPON_ALREADY_PURCHASED"
 }
 
 class Notify {

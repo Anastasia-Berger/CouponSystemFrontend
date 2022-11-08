@@ -8,15 +8,14 @@ export async function getAllCoupons() {
         globals.urls.customers + "/coupons");
 }
 
-export async function purchaseCoupon(coupon: CouponModel) {
+export async function purchaseCoupon(id: number) {
     return await tokenAxios.post<CouponModel>(
-        globals.urls.customers + "/purchase", coupon
-    );
+        globals.urls.customers + '/purchase/' + id);
 }
 
 export async function getAllCustomerCoupons() {
     return await tokenAxios.get<CouponModel[]>
-        (globals.urls.customers + '/coupons');
+        (globals.urls.customers + '/coupons/purchased');
 }
 
 export async function getAllCustomerCouponsByCategory(category: string) {

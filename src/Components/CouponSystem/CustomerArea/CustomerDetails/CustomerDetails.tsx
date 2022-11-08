@@ -35,34 +35,12 @@ function CustomerDetails(): JSX.Element {
             .catch((err) => { /*notify.error(err);*/ });
     }, []);
 
-    const [count, setCount] = useState<number>(store.getState().customersAppState.coupons.length);
-
-    useEffect(() => {
-        if (count === 0) {
-            getAllCustomerCoupons()
-                .then(res => setCount(res.data.length))
-                // .catch(err => /*notify.error(err)*/);
-        }
-
-
-    }, [count]);//WOW!
-
-    useEffect(() => {
-        return store.subscribe(() => {
-            setCount(store.getState().customersAppState.coupons.length); // Will let us notify
-        });
-
-    }
-        , [])
-
-
+ 
     return (
         <div className="CustomerDetails">
 
 
             <div className="Container">
-            {count}
-
                 <CustomerItem customer={customerDetails} />
                 <CustomerCoupons />
             </div>

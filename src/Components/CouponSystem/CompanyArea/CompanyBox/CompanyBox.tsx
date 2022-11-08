@@ -11,7 +11,7 @@ import notify, { ErrMsg } from "../../../../Services/Notification";
 import { countCompanyCoupons, countCustomerCoupons } from "../../../../Web API/AdminApi";
 import { getAllCompanyCoupons, getCompanyDetails } from "../../../../Web API/CompanyApi";
 import CustomLink from "../../../Shared/CustomLink/CustomLink";
-import TotalCouponsById from "../../Totals/TotalCouponsById/TotalCouponsById";
+import TotalCouponsById from "../TotalCouponsById/TotalCouponsById";
 import TotalCoupons from "../../Totals/TotalCuopons/TotalCoupons";
 import "./CompanyBox.css";
 

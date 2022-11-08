@@ -59,9 +59,9 @@ function CustomersList(): JSX.Element {
             </div>
 
             {(customers?.length > 0) ?
-                <> <div className="Container">
+                <div className="Container">
                     {customers.map((customer) => <CustomerItem key={customer.id} customer={customer} />)}
-                </div> </>
+                </div>
                 :
                 <> <EmptyView msg="NO CUSTOMERS FOR YOU" /> </>}
 

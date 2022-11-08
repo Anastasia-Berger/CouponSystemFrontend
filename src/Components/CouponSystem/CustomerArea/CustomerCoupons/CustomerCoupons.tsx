@@ -23,43 +23,52 @@ function CustomerCoupons(): JSX.Element {
         }
     }, [])
 
-    const [coupons, setCoupons] = useState<CouponModel[]>
-    (store.getState().couponsAppState.coupons);
+    const [coupons, setCoupons] = useState<CouponModel[]>(store.getState().couponsAppState.coupons);
 
-        // Side effects goes here
-        useEffect(() => {
-            if (coupons?.length === 0) {
-                getAllCustomerCoupons()
-                    .then((res) => {
-                        // Updating Component State
-                        setCoupons(res.data);
-                        // Updating global state
-                        store.dispatch(couponsDownloadedAction(res.data));
-                        notify.success(SccMsg.ALL_COUPONS);
-                    })
-                    .catch((err) => { notify.error(err); });
-            }
-        }, []);
-    
+    useEffect(() => {
+        getAllCustomerCoupons()
+            .then((res) => {
+                // Updating Component State
+                setCoupons(res.data);
+                // Updating global state
+                store.dispatch(couponsDownloadedAction(res.data));
+                // notify.success(SccMsg.GOT_TASKS);
+            })
+            .catch((err) => { /*notify.error(err);*/ });
+    }, []);
+
+    const [count, setCount] = useState<number>(store.getState().customersAppState.coupons.length);
+
+    useEffect(() => {
+        if (count === 0) {
+            getAllCustomerCoupons()
+                .then(res => setCount(res.data.length))
+            // .catch(err => /*notify.error(err)*/);
+        }
+    }, [count]);//WOW!
+
+    useEffect(() => {
+        return store.subscribe(() => {
+            setCount(store.getState().customersAppState.coupons.length); // Will let us notify
+        });
+    }, [])
+
     return (
         <div className="CustomerCoupons">
-			
-            <h2>List Of Coupons</h2>
 
-            <CustomLink to="/coupons/add"> <FiPlusCircle size={30} /> </CustomLink>
+            <h2>List of purchased coupons ({count})</h2>
 
-            {(coupons?.length > 0)
-                ?
+            {(coupons?.length > 0) ?
                 <>
-                    <div className="CouponsContainer">
+                    <div className="Container">
                         {coupons.map((coupon) => <CouponItem key={coupon.id} coupon={coupon} />)}
                     </div>
                 </>
                 :
                 <>
-                    <EmptyView msg="NO COUPONS FOR YOU" />
+                    <EmptyView msg="NO COUPONS WAS PURCHASED FOR NOW" />
                 </>}
-                
+
         </div>
     );
 }

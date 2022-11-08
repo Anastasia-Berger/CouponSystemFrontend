@@ -4,7 +4,8 @@ import { CustomerModel } from "../../../../Models/BeansModel/CustomerModel";
 import { ClientType } from "../../../../Models/Enums/ClientType";
 import store from "../../../../Redux/store";
 import CustomLink from "../../../Shared/CustomLink/CustomLink";
-import TotalCustomerCouponsById from "../../Totals/TotalCustomerCouponsById/TotalCustomerCouponsById";
+import TotalCouponsById from "../../CompanyArea/TotalCouponsById/TotalCouponsById";
+import TotalCustomerCouponsById from "../TotalCustomerCouponsById/TotalCustomerCouponsById";
 import "./CustomerItem.css";
 
 interface CustomerItemProps {
@@ -44,8 +45,13 @@ function CustomerItem(props: CustomerItemProps): JSX.Element {
                 <p>Full Name: {props.customer.firstName} {props.customer.lastName}</p>
                 <p>Email: {props.customer.email}</p>
                 <p>Password: {props.customer.password}</p>
-                <p>Coupons Purchased: <TotalCustomerCouponsById id={props.customer.id || 0} /></p>
-    
+
+                {(store.getState().authReducer.user.clientType == ClientType.CUSTOMER) ?
+                    <p>Coupons Purchased:
+                    <TotalCustomerCouponsById
+                        id={props.customer.id || 0} />
+                </p> : <></>}
+
             </div>
         </div>
     );

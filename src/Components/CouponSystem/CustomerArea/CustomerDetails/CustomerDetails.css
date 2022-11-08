@@ -1,7 +1,4 @@
-.CustomerDetails {
-	display: flex;
+.CustomerDetails > .Container {
     flex-direction: column;
-    align-content: center;
-    flex-wrap: wrap;
     align-items: center;
 }

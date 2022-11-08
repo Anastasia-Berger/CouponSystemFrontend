@@ -1,49 +1,87 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { CompanyModel } from "../../../Models/BeansModel/CompanyModel";
 import { CustomerModel } from "../../../Models/BeansModel/CustomerModel";
+import { ClientType } from "../../../Models/Enums/ClientType";
+import { companyUpdatedAction } from "../../../Redux/CompaniesAppState";
+import { customerUpdatedAction } from "../../../Redux/CustomersAppState";
 import store from "../../../Redux/store";
+import { getCompanyDetails } from "../../../Web API/CompanyApi";
+import { getCustomerDetails } from "../../../Web API/CustomerApi";
 import "./UserName.css";
 
-interface UserNameProps {
-    customer?: CustomerModel;
-    company?: CompanyModel;
-}
 
-function UserName(props: UserNameProps): JSX.Element {
+function UserName(): JSX.Element {
 
-    const [customer, setCustomer] = useState(
-        store.getState().authReducer.user?.clientType === "CUSTOMER");
-    const [company, setCompany] = useState(
-        store.getState().authReducer.user?.clientType === "COMPANY");
+    const params = useParams();
+    const id = +(params.id || '');
+
+    const [company, setCompany] = useState<CompanyModel>
+        (store.getState().companiesAppState.companies.filter(
+            company => company.id === id)[0]);
+
+    useEffect(() => {
+        getCompanyDetails()
+            .then((res) => {
+                // Updating Component State
+                setCompany(res.data);
+                // Updating global state
+                store.dispatch(companyUpdatedAction(res.data));
+                // notify.success(SccMsg.GOT_TASKS);
+            })
+            .catch((err) => { /*notify.error(err);*/ });
+    }, []);
+
+    
+    const [customer, setCustomer] = useState<CustomerModel>
+        (store.getState().customersAppState.customers.filter(
+            customer => customer.id === id)[0]);
+
+        useEffect(() => {
+            getCustomerDetails()
+                .then((res) => {
+                    // Updating Component State
+                    setCustomer(res.data);
+                    // Updating global state
+                    store.dispatch(customerUpdatedAction(res.data));
+                    // notify.success(SccMsg.GOT_TASKS);
+                })
+                .catch((err) => { /*notify.error(err);*/ });
+        }, []);
+
+
     const [admin, setAdmin] = useState(
         store.getState().authReducer.user?.clientType === "ADMINISTRATOR");
 
+
+
     useEffect(() => {
         return store.subscribe(() => {
-            setCustomer(store.getState().authReducer.user?.clientType === "CUSTOMER");
-            setCompany(store.getState().authReducer.user?.clientType === "COMPANY");
+            // setCustomer(store.getState().authReducer.user?.clientType === "CUSTOMER");
+            // setCompany(store.getState().authReducer.user?.clientType === "COMPANY");
             setAdmin(store.getState().authReducer.user?.clientType === "ADMINISTRATOR");
         });
     }, []);
 
+
     return (
         <div className="UserName">
 
-            {customer ?
+            {store.getState().authReducer.user?.clientType == ClientType.CUSTOMER ?
                 (<>
-                    <span>{" " + props.customer?.firstName + " " + props.customer?.lastName}</span>
+                    <span>{" " + customer?.firstName + " " + customer?.lastName}</span>
                 </>)
                 :
                 (<></>)}
 
-            {company ?
+            {store.getState().authReducer.user?.clientType == ClientType.COMPANY ?
                 (<>
-                    <span>{" " + props.company?.name + " "}</span>
+                    <span>{" " + company?.name + " "}</span>
                 </>)
                 :
                 (<></>)}
 
-            {admin ?
+            {store.getState().authReducer.user?.clientType == ClientType.ADMINISTRATOR ?
                 (<>
                     <span> BOSS</span>
                 </>)

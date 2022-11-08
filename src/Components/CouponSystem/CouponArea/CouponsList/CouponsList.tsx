@@ -12,6 +12,8 @@ import AddButton from "../../../Shared/AddButton/AddButton";
 import EmptyView from "../../../Shared/EmptyView/EmptyView";
 import CouponItem from "../CouponItem/CouponItem";
 
+import "./CouponsList.css";
+
 function CouponsList(): JSX.Element {
 
     const navigate = useNavigate();
@@ -23,7 +25,8 @@ function CouponsList(): JSX.Element {
         }
     }, [])
 
-    const [coupons, setCoupons] = useState<CouponModel[]>(store.getState().couponsAppState.coupons);
+    const [coupons, setCoupons] = useState<CouponModel[]>(
+        store.getState().couponsAppState.coupons);
 
     // Side effects goes here
     useEffect(() => {

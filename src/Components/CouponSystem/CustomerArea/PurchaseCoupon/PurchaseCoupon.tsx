@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { CouponModel } from "../../../../Models/BeansModel/CouponModel";
-import { couponAddedAction } from "../../../../Redux/CouponsAppState";
+import { couponAddedAction, couponUpdatedAction } from "../../../../Redux/CouponsAppState";
+import { PurchaseCouponAction } from "../../../../Redux/CustomersAppState";
 import store from "../../../../Redux/store";
 import notify, { ErrMsg, SccMsg } from "../../../../Services/Notification";
 import { purchaseCoupon } from "../../../../Web API/CustomerApi";
@@ -11,9 +12,6 @@ import "./PurchaseCoupon.css";
 function PurchaseCoupon(): JSX.Element {
 
     const navigate = useNavigate();
-    const params = useParams();
-    const id = +(params.id || '');
-
     useEffect(() => {
         // If we don't have a user object - we are not logged in
         if (!store.getState().authReducer.user.token) {
@@ -23,20 +21,26 @@ function PurchaseCoupon(): JSX.Element {
         }
     }, [])
 
-    const [coupon] = useState<CouponModel>
-        (store.getState().couponsAppState.coupons.filter
-            (coupon => coupon.id === id)[0]);
+    const params = useParams();
+    const id = +(params.id || 0);
 
+    // const [coupon] = useState<CouponModel>(store.getState().couponsAppState.coupons.filter(coupon => coupon.id === id)[0]);
 
     const yes = () => {
-        purchaseCoupon(coupon)
+        purchaseCoupon(id)
             .then(res => {
                 notify.success(SccMsg.PURCHASED);
                 // Updating global state
+                console.log('PURCHASEEEEED');
+                console.log(res.data);
                 store.dispatch(couponAddedAction(res.data));
                 navigate('/customers/coupons');
             })
-            .catch(err => notify.error(err));
+            .catch(err => {
+                notify.error(err);
+                console.log(err);
+                console.log(err.message);
+            });
     }
 
     const no = () => {
