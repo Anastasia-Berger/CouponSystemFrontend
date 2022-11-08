@@ -10,8 +10,8 @@ export async function addCoupon(coupon: CouponModel) {
 }
 
 export async function updateCoupon(id: number, coupon: CouponModel) {
-  return await tokenAxios.put<CouponModel>(
-    globals.urls.companies + "/coupon/" + id, coupon
+  return await tokenAxios.put<any>(
+    globals.urls.companies + "/coupons/" + id, coupon
   );
 }
 
