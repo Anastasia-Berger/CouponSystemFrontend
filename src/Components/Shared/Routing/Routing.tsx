@@ -25,6 +25,7 @@ import DeleteCoupon from "../../CouponSystem/CouponArea/DeleteCoupon/DeleteCoupo
 import CustomerCoupons from "../../CouponSystem/CustomerArea/CustomerCoupons/CustomerCoupons";
 import CompanyCoupons from "../../CouponSystem/CompanyArea/CompanyCoupons/CompanyCoupons";
 import CouponsList from "../../CouponSystem/CouponArea/CouponsList/CouponsList";
+import CategoryList from "../../CouponSystem/CouponArea/CategoryList/CategoryList";
 
 function Routing(): JSX.Element {
     return (
@@ -45,6 +46,9 @@ function Routing(): JSX.Element {
                 <Route path='/admin/home' element={<Home />} />
                 <Route path='/companies/home' element={<Home />} />
                 <Route path='/customers/home' element={<Home />} />
+
+                <Route path='/allCoupons' element={<CouponsList />} />
+                <Route path='/allCoupons/:category' element={<CategoryList />} />
 
                 <Route path='/about' element={<About />} />
                 <Route path='/credits' element={<Credits />} />
@@ -81,11 +85,12 @@ function Routing(): JSX.Element {
                 {/* CUSTOMER FUNCTIONAL PATH */}
                 
 
-                <Route path='/customers/coupons' element={<CouponsList />} />
-                <Route path='/customers/:id/coupons' element={<CustomerCoupons />} />
+                <Route path='/customers/all' element={<CouponsList />} />
+                
                 <Route path='/customers/purchase/:id' element={<PurchaseCoupon />} />
 
                 <Route path='/customers/details' element={<CustomerDetails />} />
+                <Route path='/customers/:id/coupons' element={<CustomerCoupons />} />
 
                 {/* COUPONS GENERAL SORT */}
 

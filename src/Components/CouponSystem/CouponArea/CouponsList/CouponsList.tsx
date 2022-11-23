@@ -5,8 +5,8 @@ import { ClientType } from "../../../../Models/Enums/ClientType";
 import { couponsDownloadedAction } from "../../../../Redux/CouponsAppState";
 import store from "../../../../Redux/store";
 import notify, { ErrMsg } from "../../../../Services/Notification";
-// import { getAllCoupons } from "../../../../Web API/CouponsApi";
-import { getAllCoupons } from "../../../../Web API/CustomerApi";
+import { getAllCoupons } from "../../../../Web API/CouponsApi";
+// import { getAllCoupons } from "../../../../Web API/CustomerApi";
 
 import AddButton from "../../../Shared/AddButton/AddButton";
 import EmptyView from "../../../Shared/EmptyView/EmptyView";
@@ -25,8 +25,7 @@ function CouponsList(): JSX.Element {
         }
     }, [])
 
-    const [coupons, setCoupons] = useState<CouponModel[]>(
-        store.getState().couponsAppState.coupons);
+    const [coupons, setCoupons] = useState<CouponModel[]>(store.getState().couponsAppState.coupons);
 
     // Side effects goes here
     useEffect(() => {

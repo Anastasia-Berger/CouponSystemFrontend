@@ -43,44 +43,38 @@ function Dashboard(): JSX.Element {
 
             <AuthMenu />
 
-            {customer ? (
-                
-                <><nav className="Navbar">
+            <nav className="Navbar">
 
-                    <CustomLink to="/customers/home">
-                        <div className="nav-item">
-                            <BsHouse size={20} className='react-icons' />
-                            <span>Home</span>
-                        </div>
-                    </CustomLink>
+                <CustomLink to="/home">
+                    <div className="nav-item">
+                        <BsHouse size={20} className='react-icons' />
+                        <span>Home</span>
+                    </div>
+                </CustomLink>
 
-                    <CustomLink to="/customers/coupons">
-                        <div className="nav-item">
-                            <FiGift size={20} className='react-icons' />
-                            <span>All Coupons / <TotalCoupons /></span>
-                        </div>
-                    </CustomLink>
 
-                    <CustomLink to="/customers/details">
-                        <div className="nav-item">
-                            <BsGear size={20} className='react-icons' />
-                            <span>Profile</span>
-                        </div>
-                    </CustomLink>
+                {customer ? (
 
-                </nav>
-                </>) : (<></>)}
+                    <>
 
-            {company ? (
-                <>
-                    <nav className="Navbar">
-
-                        <CustomLink to="companies/home">
+                        <CustomLink to="/allCoupons">
                             <div className="nav-item">
-                                <BsHouse size={20} className='react-icons' />
-                                <span>Home</span>
+                                <FiGift size={20} className='react-icons' />
+                                <span>All Coupons / <TotalCoupons /></span>
                             </div>
                         </CustomLink>
+
+                        <CustomLink to="/customers/details">
+                            <div className="nav-item">
+                                <BsGear size={20} className='react-icons' />
+                                <span>Profile</span>
+                            </div>
+                        </CustomLink>
+
+                    </>) : (<></>)}
+
+                {company ? (
+                    <>
 
                         <CustomLink to="companies/coupons">
                             <div className="nav-item">
@@ -88,7 +82,7 @@ function Dashboard(): JSX.Element {
                                 <span>Coupons / <TotalCoupons /></span>
                             </div>
                         </CustomLink>
-                        
+
                         <CustomLink to="companies/details">
                             <div className="nav-item">
                                 <BsGear size={20} className='react-icons' />
@@ -96,17 +90,14 @@ function Dashboard(): JSX.Element {
                             </div>
                         </CustomLink>
 
-                    </nav>
-                </>) : (<></>)}
+                    </>) : (<></>)}
 
-            {admin ? (
-                <>
-                    <nav className="Navbar">
-
-                        <CustomLink to="admin/home">
+                {admin ? (
+                    <>
+                        <CustomLink to="/allCoupons">
                             <div className="nav-item">
-                                <BsHouse size={20} className='react-icons' />
-                                <span>Home</span>
+                                <FiGift size={20} className='react-icons' />
+                                <span>All Coupons / <TotalCoupons /></span>
                             </div>
                         </CustomLink>
 
@@ -117,12 +108,6 @@ function Dashboard(): JSX.Element {
                             </div>
                         </CustomLink>
 
-                        <CustomLink to="admin/coupons">
-                            <div className="nav-item">
-                                <FiGift size={20} className='react-icons' />
-                                <span>Coupons / <TotalCoupons /></span>
-                            </div>
-                        </CustomLink>
 
                         <CustomLink to="admin/customers">
                             <div className="nav-item">
@@ -131,9 +116,9 @@ function Dashboard(): JSX.Element {
                             </div>
                         </CustomLink>
 
-                    </nav>
-                </>) : (<></>)
-            }
+                    </>) : (<></>)
+                }
+            </nav>
 
 
             {/* Custom Illustration */}

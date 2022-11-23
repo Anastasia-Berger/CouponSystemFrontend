@@ -24,38 +24,33 @@ function CouponItem(props: CouponItemProps): JSX.Element {
                 {(store.getState().authReducer.user?.clientType == ClientType.COMPANY)
                     ? <>
                         <div className="buttons">
-                        <CustomLink to={`/companies/coupons/delete/${props.coupon.id}`}>
-                            <div className="nav-item">
-                                <FiUserX size={20} className='react-icons' />
-                            </div>
-                        </CustomLink>
+                            <CustomLink to={`/companies/coupons/delete/${props.coupon.id}`}>
+                                <div className="nav-item">
+                                    <FiUserX size={20} className='react-icons' />
+                                </div>
+                            </CustomLink>
 
-                        <CustomLink to={`/companies/coupons/edit/${props.coupon.id}`}>
-                            <div className="nav-item">
-                                <BsGear size={20} className='react-icons' />
-                            </div>
-                        </CustomLink>
+                            <CustomLink to={`/companies/coupons/edit/${props.coupon.id}`}>
+                                <div className="nav-item">
+                                    <BsGear size={20} className='react-icons' />
+                                </div>
+                            </CustomLink>
                         </div>
                     </> : <></>}
 
-                {/* CUSTOMER PURCHASE BUTTON */}
-                {(store.getState().authReducer.user?.clientType == ClientType.CUSTOMER)
-                    ? <>
-                        <CustomLink to={`/customers/purchase/${props.coupon.id}`}>
-                            <div className="nav-item">
-                                <BsCartPlus size={20} className='react-icons' />
-                            </div>
-                        </CustomLink>
-                    </> : <></>}
+
             </div>
 
             <div className="BoxImage">
-                <img src={props.coupon.imageUrl} alt={props.coupon.title} />
+                <img src={process.env.PUBLIC_URL + '/images/coupons/' + props.coupon.id + '.png'} alt={props.coupon.title} />
+                {props.coupon.imageUrl}
             </div>
 
             <div className="CouponDetails">
 
                 <p>{props.coupon.id} </p>
+                URL: {props.coupon.imageUrl}
+
                 <p>Company : {props.coupon.company?.name} </p>
                 <p>Title : {props.coupon.title} </p>
                 <p>Description : {props.coupon.description} </p>
@@ -66,6 +61,18 @@ function CouponItem(props: CouponItemProps): JSX.Element {
                 <StartDate startDate={props.coupon.startDate || new Date} />
                 <EndDate endDate={props.coupon.endDate || new Date} />
 
+            </div>
+
+            <div className="buttons">
+                {/* CUSTOMER PURCHASE BUTTON */}
+                {(store.getState().authReducer.user?.clientType == ClientType.CUSTOMER)
+                    ? <>
+                        <CustomLink to={`/customers/purchase/${props.coupon.id}`}>
+                            <div className="nav-item">
+                                <BsCartPlus size={20} className='react-icons' />
+                            </div>
+                        </CustomLink>
+                    </> : <></>}
             </div>
 
         </div>

@@ -17,26 +17,11 @@ function Register(): JSX.Element {
     const navigate = useNavigate();
 
     const schema = yup.object().shape({
-        firstName:
-            yup.string()
-                .required("First name is required"),
-        lastName:
-            yup.string()
-                .required("Last name is required"),
-        email:
-            yup.string()
-                .required("Email is required")
-                .email("Invalid email address"),
-        password:
-            yup.string()
-                .required("Password is required")
-                .min(4, 'Your password is too short'),
-
-        confirm:
-            yup.string()
-                .required("Confirm your password")
-                .oneOf([yup.ref('password'), null], 'Passwords must match'),
-
+        firstName: yup.string().required("First name is required"),
+        lastName:  yup.string().required("Last name is required"),
+        email:     yup.string().required("Email is required").email("Invalid email address"),
+        password:  yup.string().required("Password is required").min(4, 'Your password is too short'),
+        confirm:   yup.string().required("Confirm your password").oneOf([yup.ref('password'), null], 'Passwords must match'),
     });
 
     const { register, handleSubmit, formState: { errors, isDirty, isValid } }

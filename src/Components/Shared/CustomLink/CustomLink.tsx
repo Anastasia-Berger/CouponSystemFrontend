@@ -2,7 +2,7 @@ import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import "./CustomLink.css";
 
 interface CustomLinkProps {
-    to: string;
+    to: any;
     children: any;
 }
 

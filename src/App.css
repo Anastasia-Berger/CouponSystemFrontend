@@ -145,23 +145,9 @@ hr {
 }
 
 
-.BoxImage {
-  display: flex;
-  justify-content: center;
-  margin-top: -1.5em;
-}
 
-.BoxImage>img {
-  width: auto;
-  height: 60px;
-  border: 1px solid #eee;
-  border-radius: 50%;
-  vertical-align: middle;
-  align-items: center;
-  background-color: #eee;
 
-  padding: 10px 0px;
-}
+
 
 .Details p {
   font-size: 15px;
@@ -174,7 +160,7 @@ hr {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 30px;
+  gap: 50px;
   /* flex-direction: column; */
   /* align-items: center; */
 }

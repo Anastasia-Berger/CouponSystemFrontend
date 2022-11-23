@@ -34,7 +34,7 @@ function PurchaseCoupon(): JSX.Element {
                 console.log('PURCHASEEEEED');
                 console.log(res.data);
                 store.dispatch(couponAddedAction(res.data));
-                navigate('/customers/coupons');
+                navigate('/customers/allCoupons');
             })
             .catch(err => {
                 notify.error(err);
@@ -44,7 +44,7 @@ function PurchaseCoupon(): JSX.Element {
     }
 
     const no = () => {
-        navigate('/customers/coupons');
+        navigate('/customers/allCoupons');
     }
 
     return (

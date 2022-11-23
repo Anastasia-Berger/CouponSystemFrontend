@@ -14,3 +14,20 @@
 
     box-shadow: 5px 2px 24px 0px rgba(66, 68, 90, 0.26);
 }
+
+.BoxImage {
+    display: flex;
+    justify-content: center;
+    margin-top: -2.5em;
+}
+
+.BoxImage>img {
+    width: 40%;
+    height: auto;
+    border: 1px solid #eee;
+    border-radius: 50%;
+    vertical-align: middle;
+    align-items: center;
+    background-color: #eee;
+    padding: 0.5em;
+}

@@ -1,0 +1,57 @@
+[
+    {
+        "name": "FOOD",
+        "imgUrl": "/images/categories/FOOD.jpg",
+        "path": "/allCoupons/FOOD",
+        "color": "#EF98CD"
+    },
+    {
+        "name": "RESTAURANT",
+        "imgUrl": "/images/categories/RESTAURANT.jpg",
+        "path": "/allCoupons/RESTAURANT",
+        "color": "#FED784"
+    },
+    {
+        "name": "VACATION",
+        "imgUrl": "/images/categories/VACATION.jpg",
+        "path": "/allCoupons/VACATION",
+        "color": "#FBE292"
+    },
+    {
+        "name": "CLOTHING",
+        "imgUrl": "/images/categories/CLOTHING.jpg",
+        "path": "/allCoupons/CLOTHING",
+        "color": "#0DCBFF"
+    },
+    {
+        "name": "TOYS",
+        "imgUrl": "/images/categories/TOYS.jpg",
+        "path": "/allCoupons/TOYS",
+        "color": "#E7EBEE"
+    },
+    {
+        "name": "PHARMA",
+        "imgUrl": "/images/categories/PHARMA.jpg",
+        "path": "/allCoupons/PHARMA",
+        "color": "#37DCFF"
+    },
+    {
+        "name": "SPORTS",
+        "imgUrl": "/images/categories/SPORTS.jpg",
+        "path": "/allCoupons/SPORTS",
+        "color": "#CDEEFF"
+    },
+    {
+        "name": "ELECTRONICS",
+        "imgUrl": "/images/categories/ELECTRONICS.jpg",
+        "path": "/allCoupons/ELECTRONICS",
+        "color": "#FFFFFF"
+    },
+    {
+        "name": "GAMING",
+        "imgUrl": "/images/categories/GAMING.jpg",
+        "path": "/allCoupons/GAMING",
+        "color": "#E8E8E8"
+    }
+]
+
