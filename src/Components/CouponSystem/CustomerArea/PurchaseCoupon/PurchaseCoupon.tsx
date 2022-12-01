@@ -12,6 +12,7 @@ import "./PurchaseCoupon.css";
 function PurchaseCoupon(): JSX.Element {
 
     const navigate = useNavigate();
+
     useEffect(() => {
         // If we don't have a user object - we are not logged in
         if (!store.getState().authReducer.user.token) {
@@ -34,7 +35,7 @@ function PurchaseCoupon(): JSX.Element {
                 console.log('PURCHASEEEEED');
                 console.log(res.data);
                 store.dispatch(couponAddedAction(res.data));
-                navigate('/customers/allCoupons');
+                navigate('/allCoupons');
             })
             .catch(err => {
                 notify.error(err);
@@ -44,7 +45,7 @@ function PurchaseCoupon(): JSX.Element {
     }
 
     const no = () => {
-        navigate('/customers/allCoupons');
+        navigate('/allCoupons');
     }
 
     return (

@@ -96,7 +96,7 @@ input, select {
 }
 
 select {
-  min-width: 83%;
+  width: 83%;
   /* padding-right: 10px; */
 }
 

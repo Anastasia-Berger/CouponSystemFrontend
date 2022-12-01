@@ -10,7 +10,7 @@ interface AvatarProps {
 
 function Avatar(props: AvatarProps): JSX.Element {
     
-    const url = globals.urls.users + props.uuid;
+    const url = globals.urls.companies + props.uuid;
     console.log(url);
 
     return (
